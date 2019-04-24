@@ -17,8 +17,10 @@ const path = require('path');
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const redirect_uri = 'http://localhost:8888/callback';
+const redirect_uri = 'http://localhost:5000/callback';
 // const redirect_uri = 'https://family-drive.herokuapp.com/callback';
+const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
+// const after_auth_redirectURI = 'https://family-drive.herokuapp.com';
 const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
 
@@ -41,16 +43,16 @@ const generateRandomStr = (length) =>
 };
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Credentials", 'true');
   next();
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/public'))
-   .use(cookieParser());
+app.use(cookieParser());
 
 /**
  * Authorization process step 1/3;
@@ -77,6 +79,9 @@ app.get('/login', (req, res) =>
     );
 });
 
+/**
+ * Soon I won't be using this bc it'll redirect user back to localhost:/3000
+ */
 app.get('/playlistGenerator', (req, res) =>
 {
   res.sendFile(path.join(__dirname, '/public', 'playlistGenerator.html'));
@@ -145,9 +150,9 @@ app.get('/callback', (req, res) =>
         /**
          * After authorization, redirect user to the main page of the app
          */
-        res.redirect('/playlistGenerator');
+        res.redirect(after_auth_redirectURI);
       } else {
-        res.redirect('/playlistGenerator' +
+        res.redirect(after_auth_redirectURI +
           querystring.stringify({
             error: 'invalid_token'
           }));
