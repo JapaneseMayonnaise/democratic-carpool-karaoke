@@ -9,7 +9,8 @@ class App extends Component
     responseToPost: '',
   };
 
-  componentDidMount() {
+  componentDidMount()
+  {
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err));
@@ -25,12 +26,12 @@ class App extends Component
 
   startOAuth = async () =>
   {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "/login";
-    fetch(proxyurl + url)
+    fetch(url)
     .then(response => response.text())
     .then(contents => console.log(contents))
-    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))  };
+    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+  };
 
   handleSubmit = async e =>
   {
@@ -52,19 +53,17 @@ class App extends Component
       return (
         <div className="test">
             <div className="Main">
-              <h1>👨👵👶🏽👩🏻‍ Family Drive 👧🏿👩👨🏻‍👦🏼</h1>
+              <h1>👨👵👶🏽👩🏻‍ Reacty Family Drive 👧🏿👩👨🏻‍👦🏼</h1>
               <p>Carpool with family/friends from diffreent age groups? Not sure what music to put on?<br />
               This app can help you! It generates a playlist that consists of hit songs from the time when you are/were in your 20s.</p>
               <button onClick={this.startOAuth}>🚗 Get started 🚗</button>
-              <p>This is a prototype... UI work in progress!😁</p>
             </div>
 
             <p> =========== TEST  =========== </p>
-            <p>GET request working;</p>
             <p>{this.state.response}</p>
                <form onSubmit={this.handleSubmit}>
                  <p>
-                   <strong>Post to Server:</strong>
+                   <strong>wanna check POST request?↓</strong>
                  </p>
                  <input
                    type="text"

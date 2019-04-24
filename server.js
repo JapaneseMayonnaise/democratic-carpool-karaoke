@@ -19,7 +19,7 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const redirect_uri = 'http://localhost:8888/callback';
 // const redirect_uri = 'https://family-drive.herokuapp.com/callback';
-let port = process.env.PORT;
+const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
 
 /**
@@ -40,49 +40,17 @@ const generateRandomStr = (length) =>
   return text;
 };
 
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
    .use(cookieParser());
-
-   // //  ---- http copnnection ----  //
-   // // Allow CORS
-   // const allowCrossDomain = function(req, res, next)
-   // {
-   //     console.log("🐯"+req.headers.origin);
-   //
-   //     res.header("Access-Control-Allow-Origin", "*");
-   //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization,");
-   //     res.header(
-   //         "Access-Control-Allow-Credentials",
-   //         "true"
-   //     );
-   //     res.header(
-   //         "Access-Control-Allow-Methods",
-   //         "GET,HEAD,OPTIONS,POST,PUT,DELETE"
-   //     );
-   //     res.setHeader(
-   //         "Access-Control-Allow-Headers",
-   //         // You must include "authorization" and allow access on Header if you use CORS and credentials like Cookie
-   //         "Access-Control-Allow-Headers, Origin, Accept, authorization, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-   //
-   //     //This might not be necessary
-   //     if(req.method === 'OPTIONS'){
-   //     res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET'); //to give access to all the methods provided
-   //     return res.status(200).json({});
-   //   }
-   //
-   //   // Don't delete this "next()" otherwise server will not return any response.. somehow:(
-   //   next();
-   // }
-   //
-   // app.use(allowCrossDomain);
-   //
-   // //  ---- http copnnection ----  //
 
 /**
  * Authorization process step 1/3;
@@ -496,16 +464,17 @@ app.get('/merge_createPlaylist', (req, res) => {
 //🥰 TEST🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 app.get('/api/hello', (req, res) =>
 {
-  res.send({express: 'Keep faith. You can do this.'});
+  res.send({express: 'Server received your GET request!'});
 });
 
 app.post('/api/world', (req, res) =>
 {
   console.log(req.body);
   res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
+    `Received your POST request. This is what you sent me: ${req.body.post}`,
   );
 });
+
 //🥰 TEST🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 
 if (process.env.NODE_ENV === 'production') {
@@ -516,4 +485,5 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
