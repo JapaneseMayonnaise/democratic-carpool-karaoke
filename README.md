@@ -34,6 +34,8 @@ HTML/CSS
 
 React.js
 
+React Bootstrap
+
 Node.js
 
 Npm
