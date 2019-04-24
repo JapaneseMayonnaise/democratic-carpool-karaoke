@@ -1,5 +1,5 @@
 # Family drive with React.js
-24th April - Currently under construction✌️ (Trust me, I'm really workinbg on it!)
+24th April 2019 - Frontend currently under construction🚧 (Should be avaiable within a few days)
 
 Family drive with React.js. Family Drive is a Node.js application that generates a playlist on user's Spotify account which consists of hit songs from different generations based on user's input.
 
