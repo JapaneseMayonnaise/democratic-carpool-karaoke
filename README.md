@@ -34,5 +34,7 @@ HTML/CSS
 
 React.js
 
+Node.js
+
 Npm
 
