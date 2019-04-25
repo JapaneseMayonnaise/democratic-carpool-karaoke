@@ -53,9 +53,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
+// or put the simple cors back app.use(cors());
 
 /**
- * Authorization process step 1/3;
+ * Soon I won't be using this bc it'll redirect user back to localhost:/3000
+ */
+app.get('/playlistGenerator', (req, res) =>
+{
+  res.sendFile(path.join(__dirname, '/public', 'playlistGenerator.html'));
+});
+
+/**
+ * Spotify authorization process step 1/3;
  * get an authorization code
  */
 
@@ -80,15 +89,7 @@ app.get('/login', (req, res) =>
 });
 
 /**
- * Soon I won't be using this bc it'll redirect user back to localhost:/3000
- */
-app.get('/playlistGenerator', (req, res) =>
-{
-  res.sendFile(path.join(__dirname, '/public', 'playlistGenerator.html'));
-});
-
-/**
- * Authorization process step 2/3;
+ * Spotify authorization process step 2/3;
  * your app requests access token and refresh token after checking the state parameter
  */
 app.get('/callback', (req, res) =>
@@ -139,7 +140,7 @@ app.get('/callback', (req, res) =>
         };
 
         /**
-         * Authorization process step 3/3;
+         * Spotify authorization process step 3/3;
          * Access to the Spotify web API by using access token
          */
         request.get(options, (error, res, body) => {
@@ -164,7 +165,7 @@ app.get('/callback', (req, res) =>
 );
 
 /**
- * OAuth step To request another access token by using refresh token
+ * Request another access token by using refresh token
  */
 app.get('/refresh_token', (req, res) => {
   const refresh_token =  req.query.refresh_token;
