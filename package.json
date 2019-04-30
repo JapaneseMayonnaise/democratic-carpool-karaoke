@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "bootstrap": "3",
     "cookie-parser": "^1.4.4",
     "cor": "0.0.0",
     "cors": "^2.8.5",
@@ -29,6 +30,7 @@
     "express-favicon": "^2.0.1",
     "nodemon": "^1.18.10",
     "querystring": "^0.2.0",
+    "react-bootstrap": "^1.0.0-beta.8",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0"
   },

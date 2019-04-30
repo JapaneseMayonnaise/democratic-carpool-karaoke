@@ -1,5 +1,11 @@
+body {
+  /* background-image: url(./playlistgenerator_background.jpg); */
+  background-size: cover;
+}
+
+
 .PlaylistGenerator_container {
-  margin: 0 auto;
   width: 100%;
   text-align: center;
+  margin-top: 2%;
 }

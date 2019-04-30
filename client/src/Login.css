@@ -1,5 +1,26 @@
+body {
+  background-image: url(./login_background.jpg);
+  background-size: cover;
+}
+
 .Login_container {
-  margin: 0 auto;
   width: 100%;
   text-align: center;
+  margin-top: 2%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+Button {
+  margin-top: 3%
 }
