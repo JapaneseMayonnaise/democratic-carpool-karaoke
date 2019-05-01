@@ -1,5 +1,5 @@
 git add .
-git commit -m "latest commit"
+git commit -m $1
 git push
 git push heroku master
 heroku open
