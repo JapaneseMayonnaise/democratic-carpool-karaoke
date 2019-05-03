@@ -13,7 +13,7 @@ class PlaylistGenerator extends React.Component
     this.state =
     {
       user1Generation: null,
-      user2Generation: null
+      user2Generation: null,
     }
   }
 
@@ -26,6 +26,19 @@ class PlaylistGenerator extends React.Component
       [e.target.name]: e.target.value
     });
   }
+
+  sendUsersGeneration = async e => {
+    e.preventDefault();
+    const response = await fetch('http://localhost:5000/doAllTheJob', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ gen1: this.state.user1Generation,
+                             gen2: this.state.user2Generation,
+                           })
+    });
+  };
 
   render()
   {
@@ -58,8 +71,8 @@ class PlaylistGenerator extends React.Component
               {this.state.user2Generation ? this.state.user2Generation : "null"}
             </Col>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Go To The Playlist
+          <Button variant="primary" type="submit" onClick={this.sendUsersGeneration}>
+            Make a Playlist with the value {this.state.user1Generation} and {this.state.user2Generation}
           </Button>
         </Form>
       </Container>

@@ -42,25 +42,16 @@ const generateRandomStr = (length) =>
   return text;
 };
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials", 'true');
-  next();
-});
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cookieParser());
-// or put the simple cors back app.use(cors());
+app.use(cookieParser())
+   .use(cors());
 
-/**
- * Soon I won't be using this bc it'll redirect user back to localhost:/3000
- */
-app.get('/playlistGenerator', (req, res) =>
-{
-  res.sendFile(path.join(__dirname, '/public', 'playlistGenerator.html'));
+app.use(function(req, res, next) {
+ res.header("Access-Control-Allow-Origin", "*");
+ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+ next();
 });
 
 /**
@@ -164,6 +155,261 @@ app.get('/callback', (req, res) =>
 }
 );
 
+/** Extract track ids based on the playlist user1 chose and store them in an array
+ *
+ * @param  {string} playlistURI  URI of the playlist
+ * @param  {string} playlistName name of the playlist
+ */
+const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI_user2, playlistName_user2) =>
+{
+  /**
+   * retrieve uris
+   */
+ let playlistOptions_user1 =
+ {
+   url: 'https://api.spotify.com/v1/playlists/' + playlistURI_user1 + '/tracks?fields=items(track(uri))&limit=50',
+   headers: { 'Authorization': 'Bearer ' + access_token,
+            },
+   json: true
+ };
+
+ request.get(playlistOptions_user1, (error, resp, body) =>
+ {
+
+   if(!error && resp.statusCode === 200 || 201)
+   {
+     console.log("============= SUCCESS: User1 Retrieved URI For " + playlistName_user1 + " ==============");
+     // console.log(body);
+   }
+   else
+   {
+     console.log("============= FAIL: User1 Retrieve URI  ==============");
+     console.log(error);
+     console.log(body);
+     console.log("error => " + JSON.stringify(error));
+     console.log("body => " + JSON.stringify(body));
+     console.log(resp.statusCode);
+   }
+
+   /**
+    * put all the uri of songs in "All Out 50s" in an array uriOfSongs
+    */
+    urisOfSongs_User1 = [];
+
+    for(let i = 0; i < body.items.length; i++)
+    {
+      urisOfSongs_User1.push(body.items[i].track.uri);
+    }
+    console.log('user1 songid array🦁:' + urisOfSongs_User1);
+ });
+
+ /**
+  * do the same for user2
+  */
+  let playlistOptions_user2 =
+  {
+    url: 'https://api.spotify.com/v1/playlists/' + playlistURI_user2 + '/tracks?fields=items(track(uri))&limit=50',
+    headers: { 'Authorization': 'Bearer ' + access_token,
+             },
+    json: true
+  };
+
+  request.get(playlistOptions_user2, (error, resp, body) =>
+  {
+
+    if(!error && resp.statusCode === 200 || 201)
+    {
+      console.log("============= SUCCESS: User2 Retrieved URI For " + playlistName_user2 + " ==============");
+    }
+    else
+    {
+      console.log("============= FAIL: User2 Retrieve URI  ==============");
+      console.log(error);
+      console.log(body);
+      console.log("error => " + JSON.stringify(error));
+      console.log("body => " + JSON.stringify(body));
+      console.log(resp.statusCode);
+    }
+
+    /**
+     * put all the uri of songs in "All Out 50s" in an array uriOfSongs
+     */
+     urisOfSongs_User2 = [];
+
+     for(let i = 0; i < body.items.length; i++)
+     {
+       urisOfSongs_User2.push(body.items[i].track.uri);
+     }
+     console.log('user2 songid array🦄:' + urisOfSongs_User2);
+  });
+}
+
+app.post('/doAllTheJob', (req, res) =>
+{
+  console.log('yay connected!✌️');
+  console.log('user1 generation: ' + req.body.gen1);
+  console.log('user2 generation: ' + req.body.gen2);
+
+  switch(req.body.gen1)
+  {
+    case '1930':
+      playlistURI_user1 = '37i9dQZF1DWSV3Tk4GO2fq';
+      playlistTitle_user1 = "All Out 50s";
+      break;
+    case '1940':
+      playlistURI_user1 = '37i9dQZF1DXaKIA8E7WcJj';
+      playlistTitle_user1 = "All Out 60s";
+      break;
+    case '1950':
+      playlistURI_user1 = '37i9dQZF1DWTJ7xPn4vNaz';
+      playlistTitle_user1 = "All Out 70s";
+      break;
+    case '1960':
+      playlistURI_user1 = '37i9dQZF1DX4UtSsGT1Sbe';
+      playlistTitle_user1 = "All Out 80s";
+      break;
+    case '1970':
+      playlistURI_user1 = '37i9dQZF1DXbTxeAdrVG2l';
+      playlistTitle_user1 = "All Out 90s";
+      break;
+    case '1980':
+      playlistURI_user1 = '37i9dQZF1DX843Qf4lrFtZ';
+      playlistTitle_user1 = "Latest Hits";
+      break;
+  };
+
+  switch(req.body.gen2)
+  {
+    case '1930':
+      playlistURI_user2 = '37i9dQZF1DWSV3Tk4GO2fq';
+      playlistTitle_user2 = "All Out 50s";
+      break;
+    case '1940':
+      playlistURI_user2 = '37i9dQZF1DXaKIA8E7WcJj';
+      playlistTitle_user2 = "All Out 60s";
+      break;
+    case '1950':
+      playlistURI_user2 = '37i9dQZF1DWTJ7xPn4vNaz';
+      playlistTitle_user2 = "All Out 70s";
+      break;
+    case '1960':
+      playlistURI_user2 = '37i9dQZF1DX4UtSsGT1Sbe';
+      playlistTitle_user2 = "All Out 80s";
+      break;
+    case '1970':
+      playlistURI_user2 = '37i9dQZF1DXbTxeAdrVG2l';
+      playlistTitle_user2 = "All Out 90s";
+      break;
+    case '1980':
+      playlistURI_user2 = '37i9dQZF1DX843Qf4lrFtZ';
+      playlistTitle_user2 = "Latest Hits";
+      break;
+  };
+
+  make2ArraysOfSongIds(playlistURI_user1, playlistTitle_user1, playlistURI_user2, playlistTitle_user2);
+  res.redirect('https://open.spotify.com/playlist/6XYK21FEbzfryUHurVI8xI');
+  //😳DELAY HAPPENS HERE
+
+  // /**
+  //  *  make an array of mix of track URIs from 2 playlists
+  //  */
+  // let scope = urisOfSongs_User1.length;
+  //   let whereToInsert = 2;
+  //   for(let i = 0; i < scope; i++)
+  //   {
+  //     urisOfSongs_User2.splice(whereToInsert, 0, urisOfSongs_User1[i], urisOfSongs_User1[i + 1]);
+  //     whereToInsert = whereToInsert + 4;
+  //     i++;
+  //   }
+  //
+  //   mergedArrayOfURIs = urisOfSongs_User2;
+  //
+  // /**
+  //  * create a playlist
+  //  */
+  //   const create_a_playlist_bodyData =
+  //   {
+  //   name: "Family Drive",
+  //   description: "testin",
+  //   public: true
+  //   }
+  //
+  //   let playlistOptions =
+  //   {
+  //     url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
+  //     headers: { 'Authorization': 'Bearer ' + access_token,
+  //                'Content-Type' : 'application/json'
+  //              },
+  //     json: true,
+  //     body: create_a_playlist_bodyData
+  //   };
+  //
+  //   request.post(playlistOptions, (error, resp, body) =>
+  //   {
+  //     if(!error && resp.statusCode === 200 || 201)
+  //     {
+  //       /**
+  //        * First, create a playlist
+  //        */
+  //
+  //       playlistId = body.id;
+  //       playlistURL = body.external_urls.spotify;
+  //
+  //       console.log("============= SUCCESS: Created a playlist  ==============");
+  //       // console.log(body);
+  //       console.log('playlistId: ' + playlistId);
+  //       console.log('playlistURL: ' + body.external_urls.spotify);
+  //
+  //       /**
+  //        * second, add songs to the playlist using the array of uris of songs
+  //        */
+  //        const add_songs_bodyData =
+  //        {
+  //          uris: mergedArrayOfURIs
+  //        }
+  //
+  //        let addSongsOptions =
+  //        {
+  //          url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
+  //          headers: {
+  //                     'Authorization': 'Bearer ' + access_token
+  //                   },
+  //          json: true,
+  //          body: add_songs_bodyData
+  //        };
+  //
+  //        request.post(addSongsOptions, (error, respo, bodyy) =>
+  //        {
+  //          if(!error && respo.statusCode === 200 || 201)
+  //          {
+  //            console.log("============= SUCCESS: Merged playlists  ==============");
+  //            console.log(bodyy);
+  //          }
+  //          else
+  //          {
+  //            console.log("============= FAIL: Merge playlists  ==============");
+  //            console.log(error);
+  //            console.log(body);
+  //            console.log("error => " + JSON.stringify(error));
+  //            console.log("body => " + JSON.stringify(body));
+  //            console.log(resp.statusCode);
+  //          }
+  //        });
+  //        res.redirect(playlistURL);
+  //     }
+  //     else
+  //     {
+  //       console.log("============= FAIL: Create a playlist  ==============");
+  //       console.log(error);
+  //       console.log(body);
+  //       console.log("error => " + JSON.stringify(error));
+  //       console.log("body => " + JSON.stringify(body));
+  //       console.log(resp.statusCode);
+  //       res.redirect('/playlistGenerator');
+  //     }
+  //   });
+});
+
 /**
  * Request another access token by using refresh token
  */
@@ -193,295 +439,6 @@ app.get('/refresh_token', (req, res) => {
     });
 });
 
-/** Extract track ids based on the playlist user1 chose and store them in an array
- *
- * @param  {string} playlistURI  URI of the playlist
- * @param  {string} playlistName name of the playlist
- */
-
-const getSongURIs_user1 = (playlistURI, playlistName) =>
-{
-  /**
-   * retrieve uris
-   */
- let playlistOptions =
- {
-   url: 'https://api.spotify.com/v1/playlists/' + playlistURI + '/tracks?fields=items(track(uri))&limit=50',
-   headers: { 'Authorization': 'Bearer ' + access_token,
-            },
-   json: true
- };
-
- request.get(playlistOptions, (error, resp, body) =>
- {
-
-   if(!error && resp.statusCode === 200 || 201)
-   {
-     console.log("============= SUCCESS: User1 Retrieved URI For " + playlistName + " ==============");
-     // console.log(body);
-   }
-   else
-   {
-     console.log("============= FAIL: User1 Retrieve URI  ==============");
-     console.log(error);
-     console.log(body);
-     console.log("error => " + JSON.stringify(error));
-     console.log("body => " + JSON.stringify(body));
-     console.log(resp.statusCode);
-   }
-
-   /**
-    * put all the uri of songs in "All Out 50s" in an array uriOfSongs
-    */
-    urisOfSongs_User1 = [];
-
-    for(let i = 0; i < body.items.length; i++)
-    {
-      urisOfSongs_User1.push(body.items[i].track.uri);
-    }
- });
-}
-
-/** Extract track ids based on the playlist user2 chose and store them in an array
- *
- * @param  {string} playlistURI  URI of the playlist
- * @param  {string} playlistName name of the playlist
- */
-
-const getSongURIs_user2 = (playlistURI, playlistName) =>
-{
-  /**
-   * retrieve uris
-   */
- let playlistOptions =
- {
-   url: 'https://api.spotify.com/v1/playlists/' + playlistURI + '/tracks?fields=items(track(uri))&limit=50',
-   headers: { 'Authorization': 'Bearer ' + access_token,
-            },
-   json: true
- };
-
- request.get(playlistOptions, (error, resp, body) =>
- {
-
-   if(!error && resp.statusCode === 200 || 201)
-   {
-     console.log("============= SUCCESS: User2 Retrieved URI For " + playlistName + " ==============");
-     // console.log(body);
-   }
-   else
-   {
-     console.log("============= FAIL: User2 Retrieve URI  ==============");
-     console.log(error);
-     console.log(body);
-     console.log("error => " + JSON.stringify(error));
-     console.log("body => " + JSON.stringify(body));
-     console.log(resp.statusCode);
-   }
-
-   /**
-    * put all the uri of songs in "All Out 50s" in an array uriOfSongs
-    */
-    urisOfSongs_User2 = [];
-
-    for(let i = 0; i < body.items.length; i++)
-    {
-      urisOfSongs_User2.push(body.items[i].track.uri);
-    }
- });
-}
-
-app.get('/1930s_user1', (req, res) => {
-  getSongURIs_user1("37i9dQZF1DWSV3Tk4GO2fq", "All Out 50s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1940s_user1', (req, res) => {
-  getSongURIs_user1("37i9dQZF1DXaKIA8E7WcJj", "All Out 60s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1950s_user1', (req, res) => {
-  getSongURIs_user1("37i9dQZF1DWTJ7xPn4vNaz", "All Out 70s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1960s_user1', (req, res) => {
-  getSongURIs_user1("37i9dQZF1DX4UtSsGT1Sbe", "All Out 80s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1970s_user1', (req, res) => {
-  getSongURIs_user1("37i9dQZF1DXbTxeAdrVG2l", "All Out 90s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/after1980_user1', (req, res) => {
-  getSongURIs_user1("37i9dQZF1DX843Qf4lrFtZ", "Latest Hits");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1930s_user2', (req, res) => {
-  getSongURIs_user2("37i9dQZF1DWSV3Tk4GO2fq", "All Out 50s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1940s_user2', (req, res) => {
-  getSongURIs_user2("37i9dQZF1DXaKIA8E7WcJj", "All Out 60s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1950s_user2', (req, res) => {
-  getSongURIs_user2("37i9dQZF1DWTJ7xPn4vNaz", "All Out 70s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1960s_user2', (req, res) => {
-  getSongURIs_user2("37i9dQZF1DX4UtSsGT1Sbe", "All Out 80s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/1970s_user2', (req, res) => {
-  getSongURIs_user2("37i9dQZF1DXbTxeAdrVG2l", "All Out 90s");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/after1980_user2', (req, res) => {
-  getSongURIs_user2("37i9dQZF1DX843Qf4lrFtZ", "Latest Hits");
-  res.redirect('/playlistGenerator');
-});
-
-app.get('/merge_createPlaylist', (req, res) => {
-  /**
-   *  make an array of mix of track URIs from 2 playlists
-   */
-
-  let scope;
-
-  if(urisOfSongs_User1.length < urisOfSongs_User2.length)
-  {
-    scope = urisOfSongs_User1.length;
-    let whereToInsert = 2;
-    for(let i = 0; i < scope; i++)
-    {
-      urisOfSongs_User2.splice(whereToInsert, 0, urisOfSongs_User1[i], urisOfSongs_User1[i + 1]);
-      whereToInsert = whereToInsert + 4;
-      i++;
-    }
-    // console.log(urisOfSongs_User2);
-    mergedArrayOfURIs = urisOfSongs_User2;
-  }
-  else
-  {
-    scope = urisOfSongs_User2.length;
-    let whereToInsert = 2;
-    for(let i = 0; i < scope; i++)
-    {
-      urisOfSongs_User1.splice(whereToInsert, 0, urisOfSongs_User2[i], urisOfSongs_User2[i + 1]);
-      whereToInsert = whereToInsert + 4;
-      i++;
-    }
-    // console.log(urisOfSongs_User1);
-    mergedArrayOfURIs = urisOfSongs_User1;
-  }
-
-  /**
-   * create a playlist
-   */
-    const create_a_playlist_bodyData =
-    {
-    name: "Family Drive",
-    description: "testin",
-    public: true
-    }
-
-    let playlistOptions =
-    {
-      url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
-      headers: { 'Authorization': 'Bearer ' + access_token,
-                 'Content-Type' : 'application/json'
-               },
-      json: true,
-      body: create_a_playlist_bodyData
-    };
-
-    request.post(playlistOptions, (error, resp, body) =>
-    {
-      if(!error && resp.statusCode === 200 || 201)
-      {
-        playlistId = body.id;
-        playlistURL = body.external_urls.spotify;
-
-        console.log("============= SUCCESS: Created a playlist  ==============");
-        // console.log(body);
-        console.log('playlistId: ' + playlistId);
-        console.log('playlistURL: ' + body.external_urls.spotify);
-
-        /**
-         * Add songs to the playlist using the array of uris of songs
-         */
-         const add_songs_bodyData =
-         {
-           uris: mergedArrayOfURIs
-         }
-
-         let addSongsOptions =
-         {
-           url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
-           headers: {
-                      'Authorization': 'Bearer ' + access_token
-                    },
-           json: true,
-           body: add_songs_bodyData
-         };
-
-         request.post(addSongsOptions, (error, respo, bodyy) =>
-         {
-           if(!error && respo.statusCode === 200 || 201)
-           {
-             console.log("============= SUCCESS: Merged playlists  ==============");
-             console.log(bodyy);
-           }
-           else
-           {
-             console.log("============= FAIL: Merge playlists  ==============");
-             console.log(error);
-             console.log(body);
-             console.log("error => " + JSON.stringify(error));
-             console.log("body => " + JSON.stringify(body));
-             console.log(resp.statusCode);
-           }
-         });
-         res.redirect(playlistURL);
-      }
-      else
-      {
-        console.log("============= FAIL: Create a playlist  ==============");
-        console.log(error);
-        console.log(body);
-        console.log("error => " + JSON.stringify(error));
-        console.log("body => " + JSON.stringify(body));
-        console.log(resp.statusCode);
-        res.redirect('/playlistGenerator');
-      }
-    });
-});
-
-//🥰 TEST🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-app.get('/api/hello', (req, res) =>
-{
-  res.send({express: 'Server received your GET request!'});
-});
-
-app.post('/api/world', (req, res) =>
-{
-  console.log(req.body);
-  res.send(
-    `Received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
-
-//🥰 TEST🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
