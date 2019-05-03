@@ -244,6 +244,10 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
   });
 }
 
+app.get('/test', (req, res) => {
+  res.end('hi');
+})
+
 app.post('/doAllTheJob', (req, res) =>
 {
   console.log('yay connected!✌️');
