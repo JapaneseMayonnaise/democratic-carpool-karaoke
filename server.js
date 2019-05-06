@@ -17,10 +17,10 @@ const path = require('path');
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const redirect_uri = 'http://localhost:5000/callback';
-// const redirect_uri = 'https://family-drive.herokuapp.com/callback';
-const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
-// const after_auth_redirectURI = 'https://family-drive.herokuapp.com';
+// const redirect_uri = 'http://localhost:5000/callback';
+// const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
+const redirect_uri = 'https://family-drive.herokuapp.com/callback';
+const after_auth_redirectURI = 'https://family-drive.herokuapp.com';
 const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
 
