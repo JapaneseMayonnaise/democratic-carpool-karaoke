@@ -30,7 +30,7 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/doAllTheJob',
+    const response = await fetch('https://family-drive.herokuapp.com/doAllTheJob',
     {
       method: 'POST',
       headers: {
@@ -42,10 +42,6 @@ class PlaylistGenerator extends React.Component
     });
     const body = await response.text();
     this.setState({ isPlaylistMadeYet: body });
-  };
-
-  testButton = () => {
-    fetch('http://localhost:5555');
   };
 
   render()
@@ -82,7 +78,7 @@ class PlaylistGenerator extends React.Component
             </Col>
           </Form.Group>
           {this.state.isPlaylistMadeYet ?
-            <Button variant="primary" type="button" href='http://localhost:5000/test'>
+            <Button variant="primary" type="button" href='https://family-drive.herokuapp.com/test'>
               Done! Seriously. Go Check It.
             </Button>
             :
