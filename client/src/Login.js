@@ -19,7 +19,7 @@ class Login extends React.Component
           <Col className='h5'>Carpool with family/friends from diffreent age groups? Not sure what music to put on?<br />
           This app can help you! It generates a playlist that consists of hit songs from the time when you are/were in your 20s.</Col>
         </Row>
-        <Button variant="dark" type="submit" href='http://localhost:5000/login'>
+        <Button variant="dark" type="submit" href='https://family-drive.herokuapp.com/login'>
            🚗 Get started 🚗
         </Button>
       </Container>
