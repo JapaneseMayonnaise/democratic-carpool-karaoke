@@ -78,7 +78,7 @@ class PlaylistGenerator extends React.Component
             </Col>
           </Form.Group>
           {this.state.isPlaylistMadeYet ?
-            <Button variant="primary" type="button" href='https://family-drive.herokuapp.com/test'>
+            <Button variant="primary" type="button" href='https://familydrive-reactjs.herokuapp.com/test'>
               Done! Seriously. Go Check It.
             </Button>
             :
