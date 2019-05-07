@@ -19,7 +19,7 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 // const redirect_uri = 'http://localhost:5000/callback';
 // const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
-const redirect_uri = 'https://familydrive-reactjs.herokuapp.com//callback';
+const redirect_uri = 'https://familydrive-reactjs.herokuapp.com/callback';
 const after_auth_redirectURI = 'https://familydrive-reactjs.herokuapp.com/PlaylistGenerator';
 const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
