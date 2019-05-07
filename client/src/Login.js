@@ -25,7 +25,7 @@ class Login extends React.Component
           <Col className='h4 description' xs={{span:1, offset:0}}>Karaoke</Col>
         </Row>
         <Row>
-          <Button className='login-button' variant="outline-light" type="submit" href='http://localhost:5000/login' size="lg">
+          <Button className='login-button' variant="outline-light" type="submit" href='https://familydrive-reactjs.herokuapp.com/login' size="lg">
              Join The Party
           </Button>
         </Row>

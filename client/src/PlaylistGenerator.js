@@ -30,8 +30,8 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    // const UriTofetchFrom = 'https://familydrive-reactjs.herokuapp.com/readUserGeneration';
-    const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
+    const UriTofetchFrom = 'https://familydrive-reactjs.herokuapp.com/readUserGeneration';
+    // const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     const response = await fetch(UriTofetchFrom,
     {
       method: 'POST',
@@ -81,7 +81,7 @@ class PlaylistGenerator extends React.Component
           </Form.Group>
         </Form>
         {this.state.isPlaylistMadeYet ?
-          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='http://localhost:5000/createPlaylist' size="lg">
+          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://familydrive-reactjs.herokuapp.com/createPlaylist' size="lg">
             Done! Seriously. Go Check It.
           </Button>
           :
