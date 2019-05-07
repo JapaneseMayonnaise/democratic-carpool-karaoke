@@ -30,7 +30,7 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    const response = await fetch('https://family-drive.herokuapp.com/doAllTheJob',
+    const response = await fetch('https://familydrive-reactjs.herokuapp.com/readUserGeneration',
     {
       method: 'POST',
       headers: {
@@ -78,7 +78,7 @@ class PlaylistGenerator extends React.Component
             </Col>
           </Form.Group>
           {this.state.isPlaylistMadeYet ?
-            <Button variant="primary" type="button" href='https://familydrive-reactjs.herokuapp.com/test'>
+            <Button variant="primary" type="button" href='https://familydrive-reactjs.herokuapp.com/createPlaylist'>
               Done! Seriously. Go Check It.
             </Button>
             :

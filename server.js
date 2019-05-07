@@ -240,7 +240,7 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
   });
 }
 
-app.post('/doAllTheJob', (req, res) =>
+app.post('/readUserGeneration', (req, res) =>
 {
   console.log('yay connected!✌️');
   console.log('☘️ user1 generation: ' + req.body.gen1);
@@ -313,7 +313,7 @@ app.post('/doAllTheJob', (req, res) =>
   res.send('true');
 });
 
-app.get('/test' , (req, res) => {
+app.get('/createPlaylist' , (req, res) => {
   /**
    *  make an array of mix of track URIs from 2 playlists
    */
