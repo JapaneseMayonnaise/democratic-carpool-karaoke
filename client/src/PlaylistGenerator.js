@@ -14,7 +14,7 @@ class PlaylistGenerator extends React.Component
     {
       user1Generation: null,
       user2Generation: null,
-      isPlaylistMadeYet: null
+      isPlaylistMadeYet: false
     }
   }
 
@@ -30,7 +30,9 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    const response = await fetch('https://familydrive-reactjs.herokuapp.com/readUserGeneration',
+    // const UriTofetchFrom = 'https://familydrive-reactjs.herokuapp.com/readUserGeneration';
+    const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
+    const response = await fetch(UriTofetchFrom,
     {
       method: 'POST',
       headers: {
@@ -49,44 +51,44 @@ class PlaylistGenerator extends React.Component
     return(
       <Container className="PlaylistGenerator_container">
         <Form>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group className="user1-form-multi-select">
             <Form.Label>What year were you born in?</Form.Label>
-            <Col xs={{span:2, offset:5}}>
-              <Form.Control as="select" name="user1Generation" onChange={this.setGeneration}>
-              <option value=''>I was born in...</option>
-              <option value='1930'>Before 1930s</option>
-              <option value='1940'>1940s</option>
-              <option value='1950'>1950s</option>
-              <option value='1960'>1960s</option>
-              <option value='1970'>1970s</option>
-              <option value='1980'>After 1980s</option>
-              </Form.Control>
+              <Col xs={{span:2, offset:0}}>
+                <Form.Control as="select" name="user1Generation" onChange={this.setGeneration} size="lg">
+                  <option value=''>you guess</option>
+                  <option value='1930'>Before 1930s</option>
+                  <option value='1940'>1940s</option>
+                  <option value='1950'>1950s</option>
+                  <option value='1960'>1960s</option>
+                  <option value='1970'>1970s</option>
+                  <option value='1980'>After 1980s</option>
+                </Form.Control>
             </Col>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group className="user2-form-multi-select">
             <Form.Label>What year were your carpool buddy born in?</Form.Label>
-            <Col xs={{span:2, offset:5}}>
-              <Form.Control as="select" name="user2Generation" onChange={this.setGeneration}>
-              <option value=''>I was born in...</option>
-              <option value='1930'>Before 1930s</option>
-              <option value='1940'>1940s</option>
-              <option value='1950'>1950s</option>
-              <option value='1960'>1960s</option>
-              <option value='1970'>1970s</option>
-              <option value='1980'>After 1980s</option>
-              </Form.Control>
-            </Col>
+              <Col xs={{span:2, offset:0}}>
+                <Form.Control as="select" name="user2Generation" onChange={this.setGeneration} size="lg">
+                  <option value=''>you guess</option>
+                  <option value='1930'>Before 1930s</option>
+                  <option value='1940'>1940s</option>
+                  <option value='1950'>1950s</option>
+                  <option value='1960'>1960s</option>
+                  <option value='1970'>1970s</option>
+                  <option value='1980'>After 1980s</option>
+                </Form.Control>
+              </Col>
           </Form.Group>
-          {this.state.isPlaylistMadeYet ?
-            <Button variant="primary" type="button" href='https://familydrive-reactjs.herokuapp.com/createPlaylist'>
-              Done! Seriously. Go Check It.
-            </Button>
-            :
-            <Button variant="primary" type="submit" onClick={this.sendUsersGeneration}>
-             Make a Playlist
-            </Button>
-          }
         </Form>
+        {this.state.isPlaylistMadeYet ?
+          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='http://localhost:5000/createPlaylist' size="lg">
+            Done! Seriously. Go Check It.
+          </Button>
+          :
+          <Button className='playlistgenerator-button' variant="danger" type="submit" onClick={this.sendUsersGeneration} size="lg">
+           Create Playlist
+          </Button>
+        }
       </Container>
     );
     }

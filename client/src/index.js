@@ -5,6 +5,13 @@ import './index.css';
 import Login from './Login';
 import PlaylistGenerator from './PlaylistGenerator';
 import * as serviceWorker from './serviceWorker';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Modak', 'cursive']
+  }
+});
 
 const routing = (
   <Router>

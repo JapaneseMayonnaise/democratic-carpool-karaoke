@@ -12,16 +12,23 @@ class Login extends React.Component
   {
     return (
       <Container className="Login_container">
-        <Row>
-          <Col className='h1'>Family Drive</Col>
+        <Row className="test">
+        <Col className='h1 d' xs={{span:1, offset:0}}>D</Col>
+        <Col className='h4 description' xs={{span:1, offset:0}}>Democratic</Col>
         </Row>
         <Row>
-          <Col className='h5'>Carpool with family/friends from diffreent age groups? Not sure what music to put on?<br />
-          This app can help you! It generates a playlist that consists of hit songs from the time when you are/were in your 20s.</Col>
+          <Col className='h1 c' xs={{span:1, offset:0}}>C</Col>
+          <Col className='h4 description' xs={{span:1, offset:0}}>Carpool</Col>
         </Row>
-        <Button variant="dark" type="submit" href='https://familydrive-reactjs.herokuapp.com/login'>
-           🚗 Get started 🚗
-        </Button>
+        <Row>
+          <Col className='h1 k' xs={{span:1, offset:0}}>K</Col>
+          <Col className='h4 description' xs={{span:1, offset:0}}>Karaoke</Col>
+        </Row>
+        <Row>
+          <Button className='login-button' variant="outline-light" type="submit" href='http://localhost:5000/login' size="lg">
+             Join The Party
+          </Button>
+        </Row>
       </Container>
     )
   }
