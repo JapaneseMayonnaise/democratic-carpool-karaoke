@@ -15,14 +15,15 @@ class PlaylistGenerator extends React.Component
     {
       user1Generation: '',
       user2Generation: '',
-      isPlaylistMadeYet: false
+      isPlaylistMadeYet: false,
+      playlistName: 'Democratic Carpool Karaoke'
     }
   }
 
-  setGeneration = (e) =>
+  setValue = (e) =>
   {
-    console.log("value: "+ e.target.value);
-    console.log("name: "+ [e.target.name]);
+    // console.log("value: "+ e.target.value);
+    // console.log("name: "+ [e.target.name]);
 
     this.setState({
       [e.target.name]: e.target.value
@@ -31,8 +32,8 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    // const UriTofetchFrom = 'https://familydrive-reactjs.herokuapp.com/readUserGeneration';
-    const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
+    const UriTofetchFrom = 'https://familydrive-reactjs.herokuapp.com/readUserGeneration';
+    // const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     const response = await fetch(UriTofetchFrom,
     {
       method: 'POST',
@@ -41,6 +42,7 @@ class PlaylistGenerator extends React.Component
       },
       body: JSON.stringify({ gen1: this.state.user1Generation,
                              gen2: this.state.user2Generation,
+                             playlistName: this.state.playlistName,
                            })
     });
     const body = await response.text();
@@ -55,7 +57,7 @@ class PlaylistGenerator extends React.Component
           <Form.Group className="user1-form-multi-select">
             <Form.Label>What year were you born in?</Form.Label>
               <Col xs={{span:2, offset:0}}>
-                <Form.Control as="select" name="user1Generation" onChange={this.setGeneration} size="lg">
+                <Form.Control as="select" name="user1Generation" onChange={this.setValue} size="lg">
                   <option value=''>Choose...</option>
                   <option value='1930'>Before 1930s</option>
                   <option value='1940'>1940s</option>
@@ -73,7 +75,7 @@ class PlaylistGenerator extends React.Component
           <Form.Group className="user2-form-multi-select">
             <Form.Label>What year were your carpool buddy born in?</Form.Label>
               <Col xs={{span:2, offset:0}}>
-                <Form.Control as="select" name="user2Generation" onChange={this.setGeneration} size="lg">
+                <Form.Control as="select" name="user2Generation" onChange={this.setValue} size="lg">
                   <option value=''>Choose...</option>
                   <option value='1930'>Before 1930s</option>
                   <option value='1940'>1940s</option>
@@ -88,9 +90,15 @@ class PlaylistGenerator extends React.Component
                 </Form.Control>
               </Col>
           </Form.Group>
+          <Form.Group className="playlist-name">
+            <Col xs={{span:4, offset:0}}>
+            <Form.Label>Playlist Title?</Form.Label>
+            <Form.Control name="playlistName" onChange={this.setValue} type="text" placeholder="Democratic Carpool Karaoke" size="lg"/>
+            </Col>
+          </Form.Group>
         </Form>
         {this.state.isPlaylistMadeYet ?
-          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='http://localhost:5000/createPlaylist' size="lg">
+          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://familydrive-reactjs.herokuapp.com/createPlaylist' size="lg">
             Done! Seriously. Click me to go check it.
           </Button>
           :

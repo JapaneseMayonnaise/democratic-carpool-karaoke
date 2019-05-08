@@ -13,7 +13,7 @@ body {
 .PlaylistGenerator_container {
   padding: 0;
   margin: 0;
-  padding-top: 11%;
+  padding-top: 8%;
 }
 
 .user1-form-multi-select {
@@ -21,15 +21,20 @@ body {
 }
 
 .user2-form-multi-select {
-  margin-top: 5%;
+  margin-top: 4%;
   font-size: 2em;
 }
 
 .playlistgenerator-button {
-  margin-top: 5%;
+  margin-top: 4%;
   margin-left: 15px;
 }
 
 .playlistgenerator-photo-credit a {
   color: #f00;
+}
+
+.playlist-name {
+  margin-top: 4%;
+  font-size: 2em;
 }

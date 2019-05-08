@@ -17,10 +17,10 @@ const path = require('path');
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const redirect_uri = 'http://localhost:5000/callback';
-const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
-// const redirect_uri = 'https://familydrive-reactjs.herokuapp.com/callback';
-// const after_auth_redirectURI = 'https://familydrive-reactjs.herokuapp.com/PlaylistGenerator';
+// const redirect_uri = 'http://localhost:5000/callback';
+// const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
+const redirect_uri = 'https://familydrive-reactjs.herokuapp.com/callback';
+const after_auth_redirectURI = 'https://familydrive-reactjs.herokuapp.com/PlaylistGenerator';
 const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
 
@@ -242,9 +242,58 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
 
 app.post('/readUserGeneration', (req, res) =>
 {
-  // console.log('yay connected!✌️');
-  // console.log('☘️ user1 generation: ' + req.body.gen1);
-  // console.log('🌸 user2 generation: ' + req.body.gen2);
+  console.log('yay connected!✌️');
+  console.log('☘️ User1 generation: ' + req.body.gen1);
+  console.log('🌸 User2 generation: ' + req.body.gen2);
+  console.log('🦄Playlist Name: ' + req.body.playlistName);
+
+  /**
+   * create a playlist
+   */
+  const create_a_playlist_bodyData =
+  {
+  name: req.body.playlistName,
+  description: "Playlist created by the web application 'Democratic Carpool Karaoke' that consists of songs from multiple generations. 2 songs from either generation are played by turn.",
+  public: true
+  }
+
+  let playlistOptions =
+  {
+    url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
+    headers: { 'Authorization': 'Bearer ' + access_token,
+               'Content-Type' : 'application/json'
+             },
+    json: true,
+    body: create_a_playlist_bodyData
+  };
+
+  request.post(playlistOptions, (error, resp, body) =>
+  {
+    if(!error && resp.statusCode === 200 || 201)
+    {
+      /**
+       * First, create a playlist
+       */
+
+      playlistId = body.id;
+      playlistURL = body.external_urls.spotify;
+
+      console.log("============= SUCCESS: Created a playlist  ==============");
+      // console.log(body);
+      console.log('playlistId: ' + playlistId);
+      console.log('playlistURL: ' + body.external_urls.spotify);
+    }
+    else
+    {
+      console.log("============= FAIL: Create a playlist  ==============");
+      console.log(error);
+      console.log(body);
+      console.log("error => " + JSON.stringify(error));
+      console.log("body => " + JSON.stringify(body));
+      console.log(resp.statusCode);
+      res.send('failed to create a playlist');
+    }
+  });
 
   switch(req.body.gen1)
   {
@@ -350,92 +399,45 @@ app.get('/createPlaylist' , (req, res) => {
       i++;
     }
 
-    mergedArrayOfURIs = urisOfSongs_User2;
+  mergedArrayOfURIs = urisOfSongs_User2;
 
   /**
-   * create a playlist
+   * Add songs to the playlist using the array of uris of songs
    */
-    const create_a_playlist_bodyData =
-    {
-    name: "Family Drive",
-    description: "testin",
-    public: true
-    }
+   const add_songs_bodyData =
+   {
+     uris: mergedArrayOfURIs
+   }
 
-    let playlistOptions =
-    {
-      url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
-      headers: { 'Authorization': 'Bearer ' + access_token,
-                 'Content-Type' : 'application/json'
-               },
-      json: true,
-      body: create_a_playlist_bodyData
-    };
+   let addSongsOptions =
+   {
+     url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
+     headers: {
+                'Authorization': 'Bearer ' + access_token
+              },
+     json: true,
+     body: add_songs_bodyData
+   };
 
-    request.post(playlistOptions, (error, resp, body) =>
-    {
-      if(!error && resp.statusCode === 200 || 201)
-      {
-        /**
-         * First, create a playlist
-         */
+   request.post(addSongsOptions, (error, respo, bodyy) =>
+   {
+     if(!error && respo.statusCode === 200 || 201)
+     {
+       console.log("============= SUCCESS: Merged playlists  ==============");
+       console.log(bodyy);
+     }
+     else
+     {
+       console.log("============= FAIL: Merge playlists  ==============");
+       console.log(error);
+       console.log(body);
+       console.log("error => " + JSON.stringify(error));
+       console.log("body => " + JSON.stringify(body));
+       console.log(resp.statusCode);
+     }
+   });
 
-        playlistId = body.id;
-        playlistURL = body.external_urls.spotify;
-
-        console.log("============= SUCCESS: Created a playlist  ==============");
-        // console.log(body);
-        console.log('playlistId: ' + playlistId);
-        console.log('playlistURL: ' + body.external_urls.spotify);
-
-        /**
-         * second, add songs to the playlist using the array of uris of songs
-         */
-         const add_songs_bodyData =
-         {
-           uris: mergedArrayOfURIs
-         }
-
-         let addSongsOptions =
-         {
-           url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
-           headers: {
-                      'Authorization': 'Bearer ' + access_token
-                    },
-           json: true,
-           body: add_songs_bodyData
-         };
-
-         request.post(addSongsOptions, (error, respo, bodyy) =>
-         {
-           if(!error && respo.statusCode === 200 || 201)
-           {
-             console.log("============= SUCCESS: Merged playlists  ==============");
-             console.log(bodyy);
-           }
-           else
-           {
-             console.log("============= FAIL: Merge playlists  ==============");
-             console.log(error);
-             console.log(body);
-             console.log("error => " + JSON.stringify(error));
-             console.log("body => " + JSON.stringify(body));
-             console.log(resp.statusCode);
-           }
-         });
-         res.redirect(playlistURL);
-      }
-      else
-      {
-        console.log("============= FAIL: Create a playlist  ==============");
-        console.log(error);
-        console.log(body);
-        console.log("error => " + JSON.stringify(error));
-        console.log("body => " + JSON.stringify(body));
-        console.log(resp.statusCode);
-        res.redirect('/playlistGenerator');
-      }
-    });
+   res.redirect(playlistURL);
 });
 
 /**
