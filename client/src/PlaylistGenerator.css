@@ -11,10 +11,9 @@ body {
 }
 
 .PlaylistGenerator_container {
-  padding-left: 0;
-  margin-left: 0;
+  padding: 0;
+  margin: 0;
   padding-top: 11%;
-
 }
 
 .user1-form-multi-select {
@@ -29,4 +28,8 @@ body {
 .playlistgenerator-button {
   margin-top: 5%;
   margin-left: 15px;
+}
+
+.playlistgenerator-photo-credit a {
+  color: #f00;
 }

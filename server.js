@@ -17,10 +17,10 @@ const path = require('path');
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-// const redirect_uri = 'http://localhost:5000/callback';
-// const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
-const redirect_uri = 'https://familydrive-reactjs.herokuapp.com/callback';
-const after_auth_redirectURI = 'https://familydrive-reactjs.herokuapp.com/PlaylistGenerator';
+const redirect_uri = 'http://localhost:5000/callback';
+const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
+// const redirect_uri = 'https://familydrive-reactjs.herokuapp.com/callback';
+// const after_auth_redirectURI = 'https://familydrive-reactjs.herokuapp.com/PlaylistGenerator';
 const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
 
@@ -242,9 +242,9 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
 
 app.post('/readUserGeneration', (req, res) =>
 {
-  console.log('yay connected!✌️');
-  console.log('☘️ user1 generation: ' + req.body.gen1);
-  console.log('🌸 user2 generation: ' + req.body.gen2);
+  // console.log('yay connected!✌️');
+  // console.log('☘️ user1 generation: ' + req.body.gen1);
+  // console.log('🌸 user2 generation: ' + req.body.gen2);
 
   switch(req.body.gen1)
   {
@@ -272,9 +272,21 @@ app.post('/readUserGeneration', (req, res) =>
       playlistURI_user1 = '37i9dQZF1DX843Qf4lrFtZ';
       playlistTitle_user1 = "Latest Hits";
       break;
+    case '1990':
+      playlistURI_user1 = '2CJsD3fcYJWcliEKnwmovU';
+      playlistTitle_user1 = "Top 50 Global";
+      break;
+    case '2000':
+      playlistURI_user1 = '3Zu0J0JzSRzAT32LgFyg7i';
+      playlistTitle_user1 = "Top New 2019 in England";
+      break;
+    case '2010':
+      playlistURI_user1 = '2NXQMbuBJHxm37uC6CArRM';
+      playlistTitle_user1 = "Kids Songs";
+      break;
     default:
-      playlistURI_user1 = '37i9dQZF1DX843Qf4lrFtZ';
-      playlistTitle_user1 = "dafault";
+      playlistURI_user1 = '5Zv7fTFAnzrMIHFrxQycLS';
+      playlistTitle_user1 = "Multi Generation";
   };
 
   switch(req.body.gen2)
@@ -300,12 +312,24 @@ app.post('/readUserGeneration', (req, res) =>
       playlistTitle_user2 = "All Out 90s";
       break;
     case '1980':
-      playlistURI_user2 = '37i9dQZF1DX843Qf4lrFtZ';
-      playlistTitle_user2 = "Latest Hits";
+      playlistURI_user2 = '6rzrCJQ8BicVz2mdHiAWr0';
+      playlistTitle_user2 = "Weekly Hits";
+      break;
+    case '1990':
+      playlistURI_user2 = '2BAkAh0GWqDwuSFEJsH1wJ';
+      playlistTitle_user2 = "Low Volume Funk";
+      break;
+    case '2000':
+      playlistURI_user2 = '37i9dQZF1DWSrj7tqQ9IOu';
+      playlistTitle_user2 = "French Indie Pop";
+      break;
+    case '2010':
+      playlistURI_user2 = '37i9dQZF1DWZhxU4AiByxO';
+      playlistTitle_user2 = "Pop 4 Kids";
       break;
     default:
-      playlistURI_user2 = '37i9dQZF1DX843Qf4lrFtZ';
-      playlistTitle_user2 = "dafault";
+      playlistURI_user2 = '08dTiXNDWDTBVbBEbJ7Qq8';
+      playlistTitle_user2 = "Multi Generation";
   };
 
   make2ArraysOfSongIds(playlistURI_user1, playlistTitle_user1, playlistURI_user2, playlistTitle_user2);

@@ -1,5 +1,6 @@
 body, html {
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -13,6 +14,7 @@ body {
 .Login_container {
   padding-left: 0;
   margin-left: 10px;
+  margin-right: 0;
 }
 
 .login-button {
@@ -31,11 +33,6 @@ body {
   margin-top: 3%;
 }
 
-.test.description {
-  visibility: hidden;
-}
-
-.test:hover .description {
-  margin-top: 3%;
-  visibility: visible;
+.login-photo-credit a {
+  color: #f00;
 }
