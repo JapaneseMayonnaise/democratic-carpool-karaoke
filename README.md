@@ -7,38 +7,38 @@ Democratic Carpool Karaoke(Former 'Family Drive') is a Node.js application that 
 
 ### Backend
 
-* JavaScript - The web framework used
+* JavaScript
 
-Node.js
+* Node.js
 
-Express
+* [Express](https://expressjs.com/)
 
-Dotenv
+* [Dotenv](https://www.npmjs.com/package/dotenv) - so you don't have to store credentials on version control
 
-nodemon
+* [nodemon](https://nodemon.io/)
 
-Npm
+* Npm
 
-HTML
+* HTML
 
-Spotify API
+* [Spotify Developer Kit](https://developer.spotify.com/)
 
 
 ### Frontend
 
-JavaScript
+* JavaScript
 
-HTML/CSS
+* HTML/CSS
 
-React.js
+* React.js
 
-React Bootstrap
+* [React Bootstrap](https://react-bootstrap.github.io/)
 
-React Router
+* [React Router](https://github.com/ReactTraining/react-router)
 
-Web Font Loader
+* [Web Font Loader](https://github.com/typekit/webfontloader)
 
-Node.js
+* Node.js
 
-Npm
+* Npm
 
