@@ -7,7 +7,7 @@ Democratic Carpool Karaoke(Former 'Family Drive') is a Node.js application that 
 
 ### Backend
 
-・JavaScript
+* JavaScript - The web framework used
 
 Node.js
 
