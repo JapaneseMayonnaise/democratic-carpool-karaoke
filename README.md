@@ -1,6 +1,6 @@
 # Democratic Carpool Karaoke🤟🚗🎵
 
-Democratic Carpool Karaoke(Former 'Family Drive') is a Node.js application that generates a playlist on user's Spotify account which consists of hit songs from different generations based on user's input. It plays 2 songs from either generation by turn.　It's fun. Please try🙇🏻‍♀️ https://democratic-carpool-karaoke.herokuapp.com/
+Democratic Carpool Karaoke(Former 'Family Drive') is a Node.js application that generates a playlist on user's Spotify account which consists of hit songs from different generations based on user's input. It plays 2 songs from either generation by turn.　It's fun. Please try https://democratic-carpool-karaoke.herokuapp.com/ 🙇🏻‍♀️🙇🏾‍♂️
 
 
 ## Tech/framework used
