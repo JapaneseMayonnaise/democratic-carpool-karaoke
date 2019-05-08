@@ -2,7 +2,6 @@
 
 Family Drive is a Node.js application that generates a playlist on user's Spotify account which consists of hit songs from different generations based on user's input.
 
-Non-Reacty version available here https://family-drive.herokuapp.com/
 
 ## Tech/framework used
 
@@ -34,6 +33,10 @@ HTML/CSS
 React.js
 
 React Bootstrap
+
+React Router
+
+Web Font Loader
 
 Node.js
 
