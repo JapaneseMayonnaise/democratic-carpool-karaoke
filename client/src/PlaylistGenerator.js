@@ -32,7 +32,7 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    const UriTofetchFrom = 'https://familydrive-reactjs.herokuapp.com/readUserGeneration';
+    const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/readUserGeneration';
     // const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     const response = await fetch(UriTofetchFrom,
     {
@@ -98,7 +98,7 @@ class PlaylistGenerator extends React.Component
           </Form.Group>
         </Form>
         {this.state.isPlaylistMadeYet ?
-          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://familydrive-reactjs.herokuapp.com/createPlaylist' size="lg">
+          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://democratic-carpool-karaoke.herokuapp.com/createPlaylist' size="lg">
             Done! Seriously. Click me to go check it.
           </Button>
           :
@@ -107,7 +107,7 @@ class PlaylistGenerator extends React.Component
           </Button>
         }
         <Row>
-          <Col className='h6 playlistgenerator-photo-credit fixed-bottom' xs={{span:4, offset:4}}>Made By <a href="https://github.com/DrCardamom/familydrive-reactjs">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
+          <Col className='h6 playlistgenerator-photo-credit fixed-bottom' xs={{span:4, offset:4}}>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
         </Row>
       </Container>
     );

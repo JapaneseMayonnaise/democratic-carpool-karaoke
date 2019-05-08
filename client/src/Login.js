@@ -25,12 +25,12 @@ class Login extends React.Component
           <Col className='h4 description' xs={{span:1, offset:0}}>Karaoke</Col>
         </Row>
         <Row>
-          <Button className='login-button' variant="outline-light" type="submit" href='https://familydrive-reactjs.herokuapp.com/login' size="lg">
+          <Button className='login-button' variant="outline-light" type="submit" href='https://democratic-carpool-karaoke.herokuapp.com//login' size="lg">
              Join The Party
           </Button>
         </Row>
         <Row>
-          <Col className='h6 login-photo-credit fixed-bottom' xs={{span:4, offset:4}}>Made By <a href="https://github.com/DrCardamom/familydrive-reactjs">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
+          <Col className='h6 login-photo-credit fixed-bottom' xs={{span:4, offset:4}}>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
         </Row>
       </Container>
     )
