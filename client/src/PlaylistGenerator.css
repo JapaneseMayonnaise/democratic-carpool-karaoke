@@ -14,6 +14,7 @@ body {
   padding: 0;
   margin: 0;
   padding-top: 8%;
+  height: 100%;
 }
 
 .user1-form-multi-select {
@@ -25,6 +26,11 @@ body {
   font-size: 2em;
 }
 
+.playlist-name {
+  margin-top: 4%;
+  font-size: 2em;
+}
+
 .playlistgenerator-button {
   margin-top: 4%;
   margin-left: 15px;
@@ -32,9 +38,4 @@ body {
 
 .playlistgenerator-photo-credit a {
   color: #f00;
-}
-
-.playlist-name {
-  margin-top: 4%;
-  font-size: 2em;
 }

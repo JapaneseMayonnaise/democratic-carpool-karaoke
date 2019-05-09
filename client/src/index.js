@@ -15,10 +15,8 @@ WebFont.load({
 
 const routing = (
   <Router>
-    <div>
       <Route exact path="/" component={Login} />
       <Route path="/playlistGenerator" component={PlaylistGenerator} />
-    </div>
   </Router>
 );
 

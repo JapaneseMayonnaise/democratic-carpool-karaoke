@@ -32,7 +32,7 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/readUserGeneration';
+    const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     // const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     const response = await fetch(UriTofetchFrom,
     {
@@ -52,64 +52,66 @@ class PlaylistGenerator extends React.Component
   render()
   {
     return(
-      <Container className="PlaylistGenerator_container">
-        <Form>
-          <Form.Group className="user1-form-multi-select">
-            <Form.Label>What year were you born in?</Form.Label>
-              <Col xs={{span:2, offset:0}}>
-                <Form.Control as="select" name="user1Generation" onChange={this.setValue} size="lg">
-                  <option value=''>Choose...</option>
-                  <option value='1930'>Before 1930s</option>
-                  <option value='1940'>1940s</option>
-                  <option value='1950'>1950s</option>
-                  <option value='1960'>1960s</option>
-                  <option value='1970'>1970s</option>
-                  <option value='1980'>1980s</option>
-                  <option value='1990'>1990s</option>
-                  <option value='2000'>2000s</option>
-                  <option value='2010'>After 2010s</option>
-                  <option value=''>Don't even ask</option>
-                </Form.Control>
-            </Col>
-          </Form.Group>
-          <Form.Group className="user2-form-multi-select">
-            <Form.Label>What year was your carpool buddy born in?</Form.Label>
-              <Col xs={{span:2, offset:0}}>
-                <Form.Control as="select" name="user2Generation" onChange={this.setValue} size="lg">
-                  <option value=''>Choose...</option>
-                  <option value='1930'>Before 1930s</option>
-                  <option value='1940'>1940s</option>
-                  <option value='1950'>1950s</option>
-                  <option value='1960'>1960s</option>
-                  <option value='1970'>1970s</option>
-                  <option value='1980'>1980s</option>
-                  <option value='1990'>1990s</option>
-                  <option value='2000'>2000s</option>
-                  <option value='2010'>After 2010s</option>
-                  <option value=''>Don't even ask</option>
-                </Form.Control>
+      <>
+        <div className="PlaylistGenerator_container">
+          <Form>
+            <Form.Group className="user1-form-multi-select">
+              <Form.Label>What year were you born in?</Form.Label>
+                <Col xs={{span:2, offset:0}}>
+                  <Form.Control as="select" name="user1Generation" onChange={this.setValue} size="lg">
+                    <option value=''>Choose...</option>
+                    <option value='1930'>Before 1930s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1950'>1950s</option>
+                    <option value='1960'>1960s</option>
+                    <option value='1970'>1970s</option>
+                    <option value='1980'>1980s</option>
+                    <option value='1990'>1990s</option>
+                    <option value='2000'>2000s</option>
+                    <option value='2010'>After 2010s</option>
+                    <option value=''>Don't even ask</option>
+                  </Form.Control>
               </Col>
-          </Form.Group>
-          <Form.Group className="playlist-name">
-            <Col xs={{span:4, offset:0}}>
+            </Form.Group>
+            <Form.Group className="user2-form-multi-select">
+              <Form.Label>What year was your carpool buddy born in?</Form.Label>
+                <Col xs={{span:2, offset:0}}>
+                  <Form.Control as="select" name="user2Generation" onChange={this.setValue} size="lg">
+                    <option value=''>Choose...</option>
+                    <option value='1930'>Before 1930s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1950'>1950s</option>
+                    <option value='1960'>1960s</option>
+                    <option value='1970'>1970s</option>
+                    <option value='1980'>1980s</option>
+                    <option value='1990'>1990s</option>
+                    <option value='2000'>2000s</option>
+                    <option value='2010'>After 2010s</option>
+                    <option value=''>Don't even ask</option>
+                  </Form.Control>
+                </Col>
+            </Form.Group>
+            <Form.Group className="playlist-name">
             <Form.Label>Playlist Title?</Form.Label>
-            <Form.Control name="playlistName" onChange={this.setValue} type="text" placeholder="Democratic Carpool Karaoke" size="lg"/>
-            </Col>
-          </Form.Group>
-        </Form>
-        {this.state.isPlaylistMadeYet ?
-          <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://democratic-carpool-karaoke.herokuapp.com/createPlaylist' size="lg">
-            Done! Seriously. Click me to go check it.
-          </Button>
-          :
-          <Button className='playlistgenerator-button' variant="danger" type="submit" onClick={this.sendUsersGeneration} size="lg">
-           Create Playlist
-          </Button>
-        }
+              <Col xs={{span:4, offset:0}}>
+              <Form.Control name="playlistName" onChange={this.setValue} type="text" placeholder="Democratic Carpool Karaoke" size="lg"/>
+              </Col>
+            </Form.Group>
+          </Form>
+          {this.state.isPlaylistMadeYet ?
+            <Button className='playlistgenerator-button' variant="outline-success" type="button" href='http://localhost:5000/createPlaylist' size="lg">
+              Done! Seriously. Click me to go check it.
+            </Button>
+            :
+            <Button className='playlistgenerator-button' variant="danger" type="submit" onClick={this.sendUsersGeneration} size="lg">
+             Create Playlist
+            </Button>
+          }
+        </div>
         <Row>
-          <Col className='h6 playlistgenerator-photo-credit fixed-bottom' xs={{span:4, offset:4}}>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
+          <Col className='h6 playlistgenerator-photo-credit fixed-bottom text-center'>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
         </Row>
-      </Container>
+      </>
     );
     }
 }
