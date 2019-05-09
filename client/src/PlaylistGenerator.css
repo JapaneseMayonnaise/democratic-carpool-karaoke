@@ -48,11 +48,15 @@ body {
 }
 
 .playlistgenerator-button {
-  margin-top: 4%;
+  margin-top: 3%;
   margin-left: 15px;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 .playlistgenerator-photo-credit a {
   color: #f00;
+}
+
+.playlistgenerator-photo-credit {
+  font-size: 1.5em;
 }

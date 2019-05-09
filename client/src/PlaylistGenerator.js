@@ -32,7 +32,7 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    // const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
+    // const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/readUserGeneration';
     const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     const response = await fetch(UriTofetchFrom,
     {
@@ -99,7 +99,7 @@ class PlaylistGenerator extends React.Component
             </Form.Group>
           </Form>
           {this.state.isPlaylistMadeYet ?
-            <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://democratic-carpool-karaoke.herokuapp.com/createPlaylist' size="lg">
+            <Button className='playlistgenerator-button' variant="outline-success" type="button" href='http://localhost:5000/createPlaylist' size="lg">
               Done! Seriously. Click me to go check it.
             </Button>
             :
