@@ -73,7 +73,7 @@ class PlaylistGenerator extends React.Component
             </Col>
           </Form.Group>
           <Form.Group className="user2-form-multi-select">
-            <Form.Label>What year were your carpool buddy born in?</Form.Label>
+            <Form.Label>What year was your carpool buddy born in?</Form.Label>
               <Col xs={{span:2, offset:0}}>
                 <Form.Control as="select" name="user2Generation" onChange={this.setValue} size="lg">
                   <option value=''>Choose...</option>
