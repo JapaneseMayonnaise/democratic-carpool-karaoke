@@ -14,9 +14,8 @@ class Login extends React.Component
       <>
         <div className="Login_container">
           <Row>
-            <Col className='h1 d' xs={{span:1, offset:0}}>D
+            <Col className='h1 d' xs={{span:1, offset:0}}>D</Col>
             <Col className='h4 description' xs={{span:1, offset:0}}>Democratic</Col>
-            </Col>
           </Row>
           <Row>
             <Col className='h1 c' xs={{span:1, offset:0}}>C</Col>
@@ -27,7 +26,7 @@ class Login extends React.Component
             <Col className='h4 description' xs={{span:1, offset:0}}>Karaoke</Col>
           </Row>
           <Row>
-            <Button className='login-button' variant="outline-light" type="submit" href='http://localhost:5000/login' size="lg">
+            <Button className='login-button' variant="outline-light" type="submit" href='https://democratic-carpool-karaoke.herokuapp.com/login' size="lg">
                Join The Party
             </Button>
           </Row>
