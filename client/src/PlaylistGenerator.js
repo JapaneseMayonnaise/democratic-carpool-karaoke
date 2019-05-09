@@ -99,8 +99,7 @@ class PlaylistGenerator extends React.Component
             </Form.Group>
           </Form>
           {this.state.isPlaylistMadeYet ?
-            <Button className='playlistgenerator-button' variant="outline-success" type="button" href='const path = require('path');
-/createPlaylist' size="lg">
+            <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://democratic-carpool-karaoke.herokuapp.com/createPlaylist' size="lg">
               Done! Seriously. Click me to go check it.
             </Button>
             :
