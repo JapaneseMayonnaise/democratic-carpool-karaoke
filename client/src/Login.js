@@ -14,8 +14,9 @@ class Login extends React.Component
       <>
         <div className="Login_container">
           <Row>
-            <Col className='h1 d' xs={{span:1, offset:0}}>D</Col>
+            <Col className='h1 d' xs={{span:1, offset:0}}>D
             <Col className='h4 description' xs={{span:1, offset:0}}>Democratic</Col>
+            </Col>
           </Row>
           <Row>
             <Col className='h1 c' xs={{span:1, offset:0}}>C</Col>
