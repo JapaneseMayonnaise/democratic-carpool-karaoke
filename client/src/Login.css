@@ -3,6 +3,10 @@ body, html {
   width: 100%;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-image: url(./login_background.jpg);
   background-position: left bottom;
@@ -13,28 +17,33 @@ body {
 
 .Login_container {
   height: 100%;
-  padding-left: 0;
-  margin-left: 10px;
-  padding-right: 1px;
-  margin-right: 0;
+  padding-left: 10px;
+  overflow: hidden;
 }
 
 .login-button {
   margin-left: 8px;
+  font-size: 2em;
 }
 
 .d, .c, .k {
-  font-size: 9em;
+  font-size: 15em;
   margin-left: 5px;
   padding-left: 0;
   margin-top: 2%;
+  padding-right: 0;
 }
 
 .description {
   margin-top: 3%;
+  padding-left: 0;
+  font-size: 3em;
 }
 
 .login-photo-credit a {
   color: #f00;
+}
 
+.login-photo-credit {
+  font-size: 1.5em;
 }

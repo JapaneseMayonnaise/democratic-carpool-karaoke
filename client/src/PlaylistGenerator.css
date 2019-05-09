@@ -2,6 +2,10 @@ body, html {
   height: 100%;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-image: url(./login_background.jpg);
   background-position: left bottom;
@@ -18,22 +22,35 @@ body {
 }
 
 .user1-form-multi-select {
-  font-size: 2em;
+  font-size: 4em;
 }
 
 .user2-form-multi-select {
   margin-top: 4%;
-  font-size: 2em;
+  font-size: 4em;
+}
+
+.user1-form-multi-select-options {
+  font-size: 0.6em;
+}
+
+.user2-form-multi-select-options {
+  font-size: 0.6em;
 }
 
 .playlist-name {
   margin-top: 4%;
-  font-size: 2em;
+  font-size: 4em;
+}
+
+.playlist-name-form {
+  font-size: 0.6em;
 }
 
 .playlistgenerator-button {
   margin-top: 4%;
   margin-left: 15px;
+  font-size: 2em;
 }
 
 .playlistgenerator-photo-credit a {
