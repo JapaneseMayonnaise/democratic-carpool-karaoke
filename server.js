@@ -159,7 +159,7 @@ app.get('/callback', (req, res) =>
 const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI_user2, playlistName_user2) =>
 {
   /**
-   * retrieve uris
+   * Retrieve song URIs for maximum 50songs
    */
  let playlistOptions_user1 =
  {
@@ -188,7 +188,7 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
    }
 
    /**
-    * put all the uri of songs in "All Out 50s" in an array uriOfSongs
+    * Store all song URIs of the playlist in urisOfSongs_User1
     */
     urisOfSongs_User1 = [];
 
@@ -200,7 +200,8 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
  });
 
  /**
-  * do the same for user2
+  * Do the same for user2.
+  * Retrieve song URIs for maximum 50songs
   */
   let playlistOptions_user2 =
   {
@@ -228,7 +229,7 @@ const make2ArraysOfSongIds = (playlistURI_user1, playlistName_user1, playlistURI
     }
 
     /**
-     * put all the uri of songs in "All Out 50s" in an array uriOfSongs
+     * Store all song URIs of the playlist in urisOfSongs_User2
      */
      urisOfSongs_User2 = [];
 
@@ -247,9 +248,6 @@ app.post('/readUserGeneration', (req, res) =>
   console.log('🌸 User2 generation: ' + req.body.gen2);
   console.log('🦄Playlist Name: ' + req.body.playlistName);
 
-  /**
-   * create a playlist
-   */
   const create_a_playlist_bodyData =
   {
   name: req.body.playlistName,
@@ -267,14 +265,13 @@ app.post('/readUserGeneration', (req, res) =>
     body: create_a_playlist_bodyData
   };
 
+  /**
+   * create a playlist
+   */
   request.post(playlistOptions, (error, resp, body) =>
   {
     if(!error && resp.statusCode === 200 || 201)
     {
-      /**
-       * First, create a playlist
-       */
-
       playlistId = body.id;
       playlistURL = body.external_urls.spotify;
 
@@ -388,7 +385,7 @@ app.post('/readUserGeneration', (req, res) =>
 
 app.get('/createPlaylist' , (req, res) => {
   /**
-   *  make an array of mix of track URIs from 2 playlists
+   *  make an array of mix of track URIs from 2 playlists. Every 2 songs extracted from each playlists.
    */
   let scope = urisOfSongs_User1.length;
     let whereToInsert = 2;
