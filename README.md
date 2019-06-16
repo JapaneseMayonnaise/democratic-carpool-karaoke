@@ -43,6 +43,7 @@ Democratic Carpool Karaoke(Former 'Family Drive') is a Node.js application that 
 * Npm
 
 ## Setup
+```
 # install dependencies
 $ npm install # Or yarn install
 
@@ -55,4 +56,5 @@ $ npm start
 
 # generate static project
 $ npm run generate
+```
 
