@@ -1,8 +1,3 @@
-/**
- * this is a node.js application that performs the authorization code flow, which
- * allows you to access users' information on Spotify such as likes, playlists, etc.
- */
-
 const express = require('express');
 const app = express();
 const request = require('request');
@@ -15,12 +10,16 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const path = require('path');
 
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-// const redirect_uri = 'http://localhost:5000/callback';
-// const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
-const redirect_uri = 'https://democratic-carpool-karaoke.herokuapp.com/callback';
-const after_auth_redirectURI = 'https://democratic-carpool-karaoke.herokuapp.com/PlaylistGenerator';
+const client_id = 'da0a07e0e2db4ea1be6e463d08ebef73';
+const client_secret = '505218038c45415ea3d5bfafe7c694a8';
+const redirect_uri = 'http://localhost:5000/callback';
+const after_auth_redirectURI = 'http://localhost:3000/PlaylistGenerator';
+
+// const client_id = process.env.SPOTIFY_CLIENT_ID;
+// const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+// const redirect_uri = 'https://democratic-carpool-karaoke.herokuapp.com/callback';
+// const after_auth_redirectURI = 'https://democratic-carpool-karaoke.herokuapp.com/PlaylistGenerator';
+
 const port = process.env.PORT || 5000;
 let access_token, refresh_token, user_id, playlistId, urisOfSongs_User1, urisOfSongs_User2, playlistURL;
 

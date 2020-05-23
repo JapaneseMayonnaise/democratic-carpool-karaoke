@@ -3,7 +3,6 @@ import './PlaylistGenerator.css';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
 class PlaylistGenerator extends React.Component
@@ -32,8 +31,8 @@ class PlaylistGenerator extends React.Component
 
   sendUsersGeneration = async e => {
     e.preventDefault();
-    const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/readUserGeneration';
-    // const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
+    // const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/readUserGeneration';
+    const UriTofetchFrom = 'http://localhost:5000/readUserGeneration';
     const response = await fetch(UriTofetchFrom,
     {
       method: 'POST',
@@ -99,8 +98,13 @@ class PlaylistGenerator extends React.Component
             </Form.Group>
           </Form>
           {this.state.isPlaylistMadeYet ?
-            <Button className='playlistgenerator-button' variant="outline-success" type="button" href='https://democratic-carpool-karaoke.herokuapp.com/createPlaylist' size="lg">
-              Done! Seriously. Click me to go check it.
+            <Button className='playlistgenerator-button' 
+            variant="outline-success" 
+            type="button" 
+            // href='https://democratic-carpool-karaoke.herokuapp.com/createPlaylist' 
+            href='http://localhost:5000/createPlaylist' 
+            size="lg">
+              Done! Go to your Spotify account
             </Button>
             :
             <Button className='playlistgenerator-button' variant="danger" type="submit" onClick={this.sendUsersGeneration} size="lg">
