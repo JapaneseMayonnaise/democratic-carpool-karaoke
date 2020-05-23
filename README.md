@@ -3,16 +3,6 @@ Democratic Carpool Karaoke is a web application that generates a playlist on use
 
 ![democratic carpool karaoke demo gif](https://thumbs.gfycat.com/RaggedSadCarp-size_restricted.gif)
 
-## 🧰 Tech stacks
-* [React.js](https://reactjs.org/)
-* [React Bootstrap](https://react-bootstrap.github.io/)
-* [React Router](https://github.com/ReactTraining/react-router)
-* [Web Font Loader](https://github.com/typekit/webfontloader)
-* [Express](https://expressjs.com/)
-* [Dotenv](https://www.npmjs.com/package/dotenv)
-* [nodemon](https://nodemon.io/)
-* [Spotify Developer Kit](https://developer.spotify.com/)
-
 ## 📥 Installaton instruction
 ```
 // at your /home
@@ -28,6 +18,17 @@ npm install
 // to start up the server,
 yarn dev
 ```
+
+## 🧰 Tech stacks
+* [React.js](https://reactjs.org/)
+* [React Bootstrap](https://react-bootstrap.github.io/)
+* [React Router](https://github.com/ReactTraining/react-router)
+* [Web Font Loader](https://github.com/typekit/webfontloader)
+* [Express](https://expressjs.com/)
+* [Dotenv](https://www.npmjs.com/package/dotenv)
+* [nodemon](https://nodemon.io/)
+* [Spotify Developer Kit](https://developer.spotify.com/)
+
 
 ## :wave: Be my dev buddy
 I am a people person and love working in a team! Feel free to say hi, be my friend!
