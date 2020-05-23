@@ -2,27 +2,13 @@
 Democratic Carpool Karaoke is a web application that generates a playlist on user's Spotify account which consists of hit songs from 2 different generations based on use input.
 
 ## 🧰 Tech stacks
-+ Bulma - https://bulma.io/
-+ React.js - https://reactjs.org/
-
-### Frontend
-* JavaScript
-* HTML/CSS
-* React.js
+* [React.js](https://reactjs.org/)
 * [React Bootstrap](https://react-bootstrap.github.io/)
 * [React Router](https://github.com/ReactTraining/react-router)
 * [Web Font Loader](https://github.com/typekit/webfontloader)
-* Node.js
-
-### Backend
-
-* JavaScript
-* Node.js
 * [Express](https://expressjs.com/)
 * [Dotenv](https://www.npmjs.com/package/dotenv) - so you don't have to store credentials on version control
 * [nodemon](https://nodemon.io/)
-* Npm
-* HTML
 * [Spotify Developer Kit](https://developer.spotify.com/)
 
 ## 📥 Installaton instruction
