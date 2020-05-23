@@ -1,55 +1,53 @@
-# Democratic Carpool Karaoke🤟🚗🎵
+#  Democratic Carpool Karaoke
+Democratic Carpool Karaoke is a web application that generates a playlist on user's Spotify account which consists of hit songs from 2 different generations based on use input.
 
-Democratic Carpool Karaoke is a Node.js application that generates a playlist on user's Spotify account which consists of hit songs from 2 different generations based on user's input. It plays 2 songs from either generation by turn. https://democratic-carpool-karaoke.herokuapp.com/ 
+## 🧰 Tech stacks
++ Bulma - https://bulma.io/
++ React.js - https://reactjs.org/
 
-## Tech/framework used
+### Frontend
+* JavaScript
+* HTML/CSS
+* React.js
+* [React Bootstrap](https://react-bootstrap.github.io/)
+* [React Router](https://github.com/ReactTraining/react-router)
+* [Web Font Loader](https://github.com/typekit/webfontloader)
+* Node.js
 
 ### Backend
 
 * JavaScript
-
 * Node.js
-
 * [Express](https://expressjs.com/)
-
 * [Dotenv](https://www.npmjs.com/package/dotenv) - so you don't have to store credentials on version control
-
 * [nodemon](https://nodemon.io/)
-
 * Npm
-
 * HTML
-
 * [Spotify Developer Kit](https://developer.spotify.com/)
 
-
-### Frontend
-
-* JavaScript
-
-* HTML/CSS
-
-* React.js
-
-* [React Bootstrap](https://react-bootstrap.github.io/)
-
-* [React Router](https://github.com/ReactTraining/react-router)
-
-* [Web Font Loader](https://github.com/typekit/webfontloader)
-
-* Node.js
-
-* Npm
-
-## Setup
+## 📥 Installaton instruction
 ```
-# install dependencies
-$ yarn install 
-Or 
-$ npm install 
+// at your /home
+git clone git@github.com:DrCardamom/democratic-carpool-karaoke.git
 
-# start applciation using concurrently
-$ yarn dev
+// or if SSH clone doesn't work for you, try https clone (but remember, ssh clone is better)
+git clone https://github.com/DrCardamom/democratic-carpool-karaoke.git
 
+//then install all dependencies at cloned local repo. So do
+cd democratic-carpool-karaoke
+npm install
+
+// to start up the server,
+yarn dev
 ```
 
+## :wave: Be my dev buddy
+I am a people person and love working in a team! Feel free to say hi, be my friend!
+
+LinkedIn: https://www.linkedin.com/in/eshimba/
+
+Medium:  https://medium.com/@elliotshimba
+
+DEV : https://dev.to/drcardamom
+
+StackOverflow: https://stackoverflow.com/users/11227880/shimba?tab=profile
