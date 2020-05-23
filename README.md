@@ -9,7 +9,7 @@ Democratic Carpool Karaoke is a web application that generates a playlist on use
 * [React Router](https://github.com/ReactTraining/react-router)
 * [Web Font Loader](https://github.com/typekit/webfontloader)
 * [Express](https://expressjs.com/)
-* [Dotenv](https://www.npmjs.com/package/dotenv) - so you don't have to store credentials on version control
+* [Dotenv](https://www.npmjs.com/package/dotenv)
 * [nodemon](https://nodemon.io/)
 * [Spotify Developer Kit](https://developer.spotify.com/)
 
