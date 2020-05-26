@@ -7,7 +7,6 @@ const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const stateKey = 'spotify_auth_state';
 const bodyParser = require('body-parser');
-const favicon = require('serve-favicon');
 const path = require('path');
 
 const login = require('./controllers/login/login');
@@ -40,9 +39,6 @@ app.get('/login', (req, res) => {
 
 /**
  * Spotify authorization process step 2/3;
- * 
- * Variables that get set in this function:
- * access_token, refresh_token, 
  */
 app.get('/callback', (req, res) => {
   callback.handleCallback(req, res, stateKey, querystring, client_id, client_secret,request)
@@ -50,9 +46,6 @@ app.get('/callback', (req, res) => {
 
 /**
  * Receive users input from front end, create a playlist placeholder, make 2 trackIdarrays based on that
- * 
- * Variables that get set in this function:
- * sharedVar.playlistId, sharedVar.playlistURL, sharedVar.trackIdArray_User1, sharedVar.trackIdArray_User2
  */
 app.post('/firstClick', (req, res) => {
   console.log('🦄Playlist Name: ' + req.body.playlistName);
@@ -66,10 +59,7 @@ app.post('/firstClick', (req, res) => {
 });   
 
 /**
- * Actually add songs to the playlist placeholder using sharedVar.mixedArray
- * 
- * Variables that get set in this function:
- * sharedVar.mixedArray
+ * Actually add songs to the playlist placeholder 
  */
 app.get('/secondClick', (req, res) => {
     merge.mix2Arrays();
