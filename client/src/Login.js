@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-
 class Login extends React.Component
 {
   render()
@@ -27,9 +26,11 @@ class Login extends React.Component
           <Row>
             <Button className='login-button' 
             variant="outline-light" 
-            type="submit" 
+            type="submit"
+
             // href='https://democratic-carpool-karaoke.herokuapp.com/login' 
-            href='localhost://5000/login' 
+            href='http://localhost:5000/login' 
+
             size="lg">
                Join The Party
             </Button>
