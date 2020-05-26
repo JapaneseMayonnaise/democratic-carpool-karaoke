@@ -54,7 +54,7 @@ app.get('/callback', (req, res) => {
  * Variables that get set in this function:
  * sharedVar.playlistId, sharedVar.playlistURL, sharedVar.trackIdArray_User1, sharedVar.trackIdArray_User2
  */
-app.post('/readUserGeneration', (req, res) => {
+app.post('/firstClick', (req, res) => {
   console.log('🦄Playlist Name: ' + req.body.playlistName);
   console.log('☘️ User1 generation: ' + req.body.gen1);
   console.log('🌸 User2 generation: ' + req.body.gen2);
@@ -71,7 +71,7 @@ app.post('/readUserGeneration', (req, res) => {
  * Variables that get set in this function:
  * sharedVar.mixedArray
  */
-app.get('/createPlaylist', (req, res) => {
+app.get('/secondClick', (req, res) => {
     merge.mix2Arrays();
     completePlaylist.pushSongsIntoPlaylist(req, res, request);
 });
