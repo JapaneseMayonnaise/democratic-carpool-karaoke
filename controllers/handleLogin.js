@@ -1,9 +1,12 @@
-const handleLogin = (req, res, randomString, stateKey, querystring, client_id, redirect_uri) => {
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config')[env];
+
+const handleLogin = (req, res, randomString, stateKey, querystring, client_id ) => {
       let state = randomString.generateRandomString(16);
       
       res.cookie(stateKey, state);
   
-      const scope = 'user-read-private user-read-email playlist-read-private playlist-modify-public';
+      const scope = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private';
   
       res.redirect
       ('https://accounts.spotify.com/authorize?' +
@@ -12,7 +15,7 @@ const handleLogin = (req, res, randomString, stateKey, querystring, client_id, r
             response_type: 'code',
             client_id: client_id,
             scope: scope,
-            redirect_uri: redirect_uri,
+            redirect_uri: config.redirect_uri,
             state: state
         })
       );

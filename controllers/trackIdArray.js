@@ -6,9 +6,13 @@
  * @param  {string} playlistName name of the playlist. Mostly for debugging purpose
  */
 
+const sharedVar = require('../sharedVariables');
+
 const generateTrackIdArray = 
-(playlistURI, playlistName, access_token, request) =>
+(playlistURI, playlistName, request) =>
 {
+   console.log("generateTrackIdArray sharedVar.access_token", sharedVar.access_token);
+   
    let trackIdArray = [];
 
   /**
@@ -17,7 +21,7 @@ const generateTrackIdArray =
    let playlistOptions =
    {
       url: 'https://api.spotify.com/v1/playlists/' + playlistURI + '/tracks?fields=items(track(uri))&limit=50',
-      headers: { 'Authorization': 'Bearer ' + access_token,
+      headers: { 'Authorization': 'Bearer ' + sharedVar.access_token,
                },
       json: true
    };

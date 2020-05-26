@@ -30,11 +30,12 @@ const sharedVar = require('./sharedVariables');
 // // const config.redirect_uri = 'https://democratic-carpool-karaoke.herokuapp.com/callback';
 // // const config.after_auth_redirectURI = 'https://democratic-carpool-karaoke.herokuapp.com/PlaylistGenerator';
 
-var playlistId, 
-trackIdArray_User1, 
-trackIdArray_User2, 
-playlistURL;
-// access_token;
+// let user_id, 
+// playlistId, 
+// access_token, 
+// trackIdArray_User1, 
+// trackIdArray_User2, 
+// playlistURL;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -123,7 +124,9 @@ app.get('/login', (req, res) => { login.handleLogin(req, res, randomString, stat
 // });
 
 app.get('/callback', (req, res) => {
-  callback.handleCallback(req, res, stateKey, querystring, client_id, client_secret,request);  
+  callback.handleCallback(req, res, stateKey, querystring, client_id, client_secret,request,user_id,access_token);
+  console.log("access_token right after handleCallback", access_token);
+  
 });
 
 /**
@@ -133,7 +136,7 @@ app.get('/callback', (req, res) => {
  */
 app.post('/readUserGeneration', (req, res) =>
 {
-  console.log("access_token at /readUserGeneration", sharedVar.access_token);
+  console.log("access token /readUserGeneratoon", access_token);
   console.log('☘️ User1 generation: ' + req.body.gen1);
   console.log('🌸 User2 generation: ' + req.body.gen2);
   console.log('🦄Playlist Name: ' + req.body.playlistName);
@@ -147,8 +150,8 @@ app.post('/readUserGeneration', (req, res) =>
 
   let playlistOptions =
   {
-    url: 'https://api.spotify.com/v1/users/' + sharedVar.user_id + '/playlists',
-    headers: { 'Authorization': 'Bearer ' + sharedVar.access_token,
+    url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
+    headers: { 'Authorization': 'Bearer ' + access_token,
                'Content-Type' : 'application/json'
              },
     json: true,
@@ -160,15 +163,15 @@ app.post('/readUserGeneration', (req, res) =>
    */
   request.post(playlistOptions, (error, resp, body) =>
   {
-    console.log("responce body from spotify --->", body);
-    console.log("error => " + JSON.stringify(error));
-
+    console.log("body.external_urls", body.external_urls);
+    
     if(!error && resp.statusCode === 200 || 201)
     {
       playlistId = body.id;
       playlistURL = body.external_urls.spotify;
 
       console.log("============= SUCCESS: Created a playlist  ==============");
+      // console.log(body);
       console.log('playlistId: ' + playlistId);
       console.log('playlistURL: ' + body.external_urls.spotify);
     }
@@ -272,10 +275,13 @@ app.post('/readUserGeneration', (req, res) =>
 
   app.use(bodyParser.json());
 
-  trackIdArray_User1 = trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, request);
+  trackIdArray_User1 = trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, access_token, request);
 
-  trackIdArray_User2 = trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, request);
+  trackIdArray_User2 = trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, access_token, request);
   
+  // console.log('trackIdArray_User1 first --> ', trackIdArray_User1);
+  // console.log('trackIdArray_User2 first --> ', trackIdArray_User2);
+
   res.send('true'); 
 });   
 
@@ -316,7 +322,7 @@ app.get('/createPlaylist' , (req, res) => {
     {
       url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
       headers: {
-                  'Authorization': 'Bearer ' + sharedVar.access_token
+                  'Authorization': 'Bearer ' + access_token
                 },
       json: true,
       body: add_songs_bodyData

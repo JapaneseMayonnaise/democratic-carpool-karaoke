@@ -1,15 +1,9 @@
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config')[env];
+const sharedVar = require('../sharedVariables');
+
 const handleCallback = 
-(req, 
- res, 
- stateKey, 
- querystring, 
- client_id, 
- redirect_uri,
- client_secret,
- request,
- after_auth_redirectURI,
- user_id,
- access_token) => 
+(req, res, stateKey, querystring, client_id,client_secret, request) => 
  {
    const code = req.query.code || null;
    const state = req.query.state || null;
@@ -33,7 +27,7 @@ const handleCallback =
        url: 'https://accounts.spotify.com/api/token',
        form: {
          code: code,
-         redirect_uri: redirect_uri,
+         redirect_uri: config.redirect_uri,
          grant_type: 'authorization_code'
        },
        headers: {
@@ -46,16 +40,15 @@ const handleCallback =
      {
        if (!error && resp.statusCode === 200) {
  
-         access_token = body.access_token;
-         console.log("ACCESS TOKEN in handlecallback", access_token);
+        sharedVar.access_token = body.access_token;
+         console.log("ACCESS TOKEN in handlecallback.js ",sharedVar.access_token);
          
          refresh_token = body.refresh_token;
- 
  
          let options =
          {
            url: 'https://api.spotify.com/v1/me',
-           headers: { 'Authorization': 'Bearer ' + access_token },
+           headers: { 'Authorization': 'Bearer ' + sharedVar.access_token },
            json: true
          };
  
@@ -65,15 +58,17 @@ const handleCallback =
           */
          request.get(options, (error, res, body) => {
            console.log('==================================== Authorization SUCCESS ====================================');
-           user_id = body.id;
+           console.log("BODY ---> ", body);
+           
+           sharedVar.user_id = body.id;
          });
  
          /**
           * After authorization, redirect user to the main page of the app
-          */
-         res.redirect(after_auth_redirectURI);
+          */         
+         res.redirect(config.after_auth_redirectURI);
        } else {
-         res.redirect(after_auth_redirectURI +
+         res.redirect(config.after_auth_redirectURI +
            querystring.stringify({
              error: 'invalid_token'
            }));
