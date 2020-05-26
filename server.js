@@ -11,9 +11,10 @@ const favicon = require('serve-favicon');
 const path = require('path');
 
 const randomString = require('./controllers/generateRandomString');
-const trackIdArray = require('./controllers/trackIdArray');
 const login = require('./controllers/handleLogin');
 const callback = require('./controllers/handleCallback');
+const playlistUrl = require('./controllers/generatePlaylistUrl');
+const trackIdArrays = require('./controllers/generate2TrackIdArrays');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config')[env];
@@ -30,12 +31,6 @@ const sharedVar = require('./sharedVariables');
 // // const config.redirect_uri = 'https://democratic-carpool-karaoke.herokuapp.com/callback';
 // // const config.after_auth_redirectURI = 'https://democratic-carpool-karaoke.herokuapp.com/PlaylistGenerator';
 
-var playlistId, 
-trackIdArray_User1, 
-trackIdArray_User2, 
-playlistURL;
-// access_token;
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -46,7 +41,9 @@ app.use(cookieParser())
  * Spotify authorization process step 1/3;
  * get an authorization code
  */
-app.get('/login', (req, res) => { login.handleLogin(req, res, randomString, stateKey, querystring, client_id)});
+app.get('/login', (req, res) => {
+  login.handleLogin(req, res, randomString, stateKey, querystring, client_id)
+});
 
 /**
  * Spotify authorization process step 2/3;
@@ -123,159 +120,22 @@ app.get('/login', (req, res) => { login.handleLogin(req, res, randomString, stat
 // });
 
 app.get('/callback', (req, res) => {
-  callback.handleCallback(req, res, stateKey, querystring, client_id, client_secret,request);  
+  callback.handleCallback(req, res, stateKey, querystring, client_id, client_secret,request)
 });
 
 /**
  * Receive users input from front end, create a playlist placeholder, make 2 trackIdarrays based on that
  * Variables that get set in this function:
- * playlistId, playlistURL, trackIdArray_User1, trackIdArray_User2
+ * sharedVar.playlistId, sharedVar.playlistURL, sharedVar.trackIdArray_User1, sharedVar.trackIdArray_User2
  */
-app.post('/readUserGeneration', (req, res) =>
-{
-  console.log("access_token at /readUserGeneration", sharedVar.access_token);
+app.post('/readUserGeneration', (req, res) => {
+  console.log('🦄Playlist Name: ' + req.body.playlistName);
   console.log('☘️ User1 generation: ' + req.body.gen1);
   console.log('🌸 User2 generation: ' + req.body.gen2);
-  console.log('🦄Playlist Name: ' + req.body.playlistName);
 
-  const create_a_playlist_bodyData =
-  {
-    name: req.body.playlistName,
-    description: "Mixed-generation playlist created by the application 'Democratic Carpool Karaoke'. 2 songs from either generation are played by turn.",
-    public: true
-  }
+  playlistUrl.generatePlaylistUrl(req, res, request)
+  trackIdArrays.generate2TrackIdArrays(req, res, request, app, bodyParser)
 
-  let playlistOptions =
-  {
-    url: 'https://api.spotify.com/v1/users/' + sharedVar.user_id + '/playlists',
-    headers: { 'Authorization': 'Bearer ' + sharedVar.access_token,
-               'Content-Type' : 'application/json'
-             },
-    json: true,
-    body: create_a_playlist_bodyData
-  };
-
-  /**
-   * create a playlist
-   */
-  request.post(playlistOptions, (error, resp, body) =>
-  {
-    console.log("responce body from spotify --->", body);
-    console.log("error => " + JSON.stringify(error));
-
-    if(!error && resp.statusCode === 200 || 201)
-    {
-      playlistId = body.id;
-      playlistURL = body.external_urls.spotify;
-
-      console.log("============= SUCCESS: Created a playlist  ==============");
-      console.log('playlistId: ' + playlistId);
-      console.log('playlistURL: ' + body.external_urls.spotify);
-    }
-    else
-    {
-      console.log("============= FAIL: Create a playlist  ==============");
-      console.log(error);
-      console.log(body);
-      console.log("error => " + JSON.stringify(error));
-      console.log("body => " + JSON.stringify(body));
-      console.log(resp.statusCode);
-      res.send('failed to create a playlist');
-    }
-  });
-
-  switch(req.body.gen1)
-  {
-    case '1930':
-      playlistURI_user1 = '37i9dQZF1DWSV3Tk4GO2fq';
-      playlistTitle_user1 = "All Out 50s";
-      break;
-    case '1940':
-      playlistURI_user1 = '37i9dQZF1DXaKIA8E7WcJj';
-      playlistTitle_user1 = "All Out 60s";
-      break;
-    case '1950':
-      playlistURI_user1 = '37i9dQZF1DWTJ7xPn4vNaz';
-      playlistTitle_user1 = "All Out 70s";
-      break;
-    case '1960':
-      playlistURI_user1 = '37i9dQZF1DX4UtSsGT1Sbe';
-      playlistTitle_user1 = "All Out 80s";
-      break;
-    case '1970':
-      playlistURI_user1 = '37i9dQZF1DXbTxeAdrVG2l';
-      playlistTitle_user1 = "All Out 90s";
-      break;
-    case '1980':
-      playlistURI_user1 = '37i9dQZF1DX843Qf4lrFtZ';
-      playlistTitle_user1 = "Latest Hits";
-      break;
-    case '1990':
-      playlistURI_user1 = '2CJsD3fcYJWcliEKnwmovU';
-      playlistTitle_user1 = "Top 50 Global";
-      break;
-    case '2000':
-      playlistURI_user1 = '3Zu0J0JzSRzAT32LgFyg7i';
-      playlistTitle_user1 = "Top New 2019 in England";
-      break;
-    case '2010':
-      playlistURI_user1 = '51bG0ck3GcCirhWLddBKfU';
-      playlistTitle_user1 = "Kids Songs";
-      break;
-    default:
-      playlistURI_user1 = '5Zv7fTFAnzrMIHFrxQycLS';
-      playlistTitle_user1 = "Multi Generation";
-  };
-
-  switch(req.body.gen2)
-  {
-    case '1930':
-      playlistURI_user2 = '37i9dQZF1DWSV3Tk4GO2fq';
-      playlistTitle_user2 = "All Out 50s";
-      break;
-    case '1940':
-      playlistURI_user2 = '37i9dQZF1DXaKIA8E7WcJj';
-      playlistTitle_user2 = "All Out 60s";
-      break;
-    case '1950':
-      playlistURI_user2 = '37i9dQZF1DWTJ7xPn4vNaz';
-      playlistTitle_user2 = "All Out 70s";
-      break;
-    case '1960':
-      playlistURI_user2 = '37i9dQZF1DX4UtSsGT1Sbe';
-      playlistTitle_user2 = "All Out 80s";
-      break;
-    case '1970':
-      playlistURI_user2 = '37i9dQZF1DXbTxeAdrVG2l';
-      playlistTitle_user2 = "All Out 90s";
-      break;
-    case '1980':
-      playlistURI_user2 = '6rzrCJQ8BicVz2mdHiAWr0';
-      playlistTitle_user2 = "Weekly Hits";
-      break;
-    case '1990':
-      playlistURI_user2 = '2BAkAh0GWqDwuSFEJsH1wJ';
-      playlistTitle_user2 = "Low Volume Funk";
-      break;
-    case '2000':
-      playlistURI_user2 = '37i9dQZF1DWSrj7tqQ9IOu';
-      playlistTitle_user2 = "French Indie Pop";
-      break;
-    case '2010':
-      playlistURI_user2 = '37i9dQZF1DWZhxU4AiByxO';
-      playlistTitle_user2 = "Pop 4 Kids";
-      break;
-    default:
-      playlistURI_user2 = '08dTiXNDWDTBVbBEbJ7Qq8';
-      playlistTitle_user2 = "Multi Generation";
-  };
-
-  app.use(bodyParser.json());
-
-  trackIdArray_User1 = trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, request);
-
-  trackIdArray_User2 = trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, request);
-  
   res.send('true'); 
 });   
 
@@ -290,18 +150,18 @@ app.get('/createPlaylist' , (req, res) => {
      *  make an array of mix of track URIs from 2 playlists. Every 2 songs extracted from each playlists.
      */
 
-    // console.log('trackIdArray_User1 second  --> ', trackIdArray_User1, trackIdArray_User1.length);
-    // console.log('trackIdArray_User2 second --> ', trackIdArray_User2, trackIdArray_User2.length, trackIdArray_User2.length);
+    // console.log('sharedVar.trackIdArray_User1 second  --> ', sharedVar.trackIdArray_User1, sharedVar.trackIdArray_User1.length);
+    // console.log('sharedVar.trackIdArray_User2 second --> ', sharedVar.trackIdArray_User2, sharedVar.trackIdArray_User2.length, sharedVar.trackIdArray_User2.length);
 
       let whereToInsert = 2;
-      for(let i = 0; i < trackIdArray_User1.length; i++)
+      for(let i = 0; i < sharedVar.trackIdArray_User1.length; i++)
       {
-        trackIdArray_User2.splice(whereToInsert, 0, trackIdArray_User1[i], trackIdArray_User1[i + 1]);
+        sharedVar.trackIdArray_User2.splice(whereToInsert, 0, sharedVar.trackIdArray_User1[i], sharedVar.trackIdArray_User1[i + 1]);
         whereToInsert = whereToInsert + 4;
         i++;
       }
 
-    mergedArrayOfURIs = trackIdArray_User2;
+    mergedArrayOfURIs = sharedVar.trackIdArray_User2;
     console.log('mergedArrayOfURIs', mergedArrayOfURIs);
       
     /**
@@ -314,7 +174,7 @@ app.get('/createPlaylist' , (req, res) => {
 
     let addSongsOptions =
     {
-      url: 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
+      url: 'https://api.spotify.com/v1/playlists/' + sharedVar.playlistId + '/tracks',
       headers: {
                   'Authorization': 'Bearer ' + sharedVar.access_token
                 },
@@ -340,7 +200,7 @@ app.get('/createPlaylist' , (req, res) => {
       }
     });
 
-    res.redirect(playlistURL);
+    res.redirect(sharedVar.playlistURL);
 });
 
 if (process.env.NODE_ENV === 'production') {

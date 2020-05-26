@@ -3,13 +3,13 @@
  *
  * @param  {string} playlistURI  spotify playlist URI based on user's birth year
  * 
- * @param  {string} playlistName name of the playlist. Mostly for debugging purpose
+ * @param  {string} playlistTitle name of the playlist. Mostly for debugging purpose
  */
 
 const sharedVar = require('../sharedVariables');
 
 const generateTrackIdArray = 
-(playlistURI, playlistName, request) =>
+(playlistURI, playlistTitle, request) =>
 {
    console.log("generateTrackIdArray sharedVar.access_token", sharedVar.access_token);
    
@@ -30,7 +30,7 @@ const generateTrackIdArray =
    {
       if(!error && resp.statusCode === 200 || 201)
       {
-      console.log("============= SUCCESS: Retrieved URI For " + playlistName + " ==============");
+      console.log("============= SUCCESS: Retrieved URI For " + playlistTitle + " ==============");
       console.log("body", body);
       
       }
