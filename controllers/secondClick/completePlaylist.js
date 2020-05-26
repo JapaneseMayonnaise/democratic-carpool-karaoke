@@ -1,4 +1,4 @@
-const sharedVar = require('../sharedVariables');
+const sharedVar = require('../../sharedVariables');
 
 const pushSongsIntoPlaylist = (req, res, request) => {
        /**

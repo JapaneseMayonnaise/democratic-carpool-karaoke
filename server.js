@@ -10,13 +10,12 @@ const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const path = require('path');
 
-const randomString = require('./controllers/generateRandomString');
-const login = require('./controllers/handleLogin');
-const callback = require('./controllers/handleCallback');
-const playlistUrl = require('./controllers/generatePlaylistUrl');
-const trackIdArrays = require('./controllers/generate2TrackIdArrays');
-const mix2TrackIdArrays = require('./controllers/mix2Arrays');
-const completePlaylist = require('./controllers/completePlaylist');
+const login = require('./controllers/login/login');
+const callback = require('./controllers/callback/callback');
+const chooseGenerations = require('./controllers/firstClick/chooseGenerations');
+const playlistUrl = require('./controllers/firstClick/playlistUrl');
+const merge = require('./controllers/secondClick/merge');
+const completePlaylist = require('./controllers/secondClick/completePlaylist');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config')[env];
@@ -36,7 +35,7 @@ app.use(cookieParser())
  * get an authorization code
  */
 app.get('/login', (req, res) => {
-  login.handleLogin(req, res, randomString, stateKey, querystring, client_id)
+  login.handleLogin(req, res, stateKey, querystring, client_id)
 });
 
 /**
@@ -61,7 +60,7 @@ app.post('/readUserGeneration', (req, res) => {
   console.log('🌸 User2 generation: ' + req.body.gen2);
 
   playlistUrl.generatePlaylistUrl(req, res, request)
-  trackIdArrays.generate2TrackIdArrays(req, res, request, app, bodyParser)
+  chooseGenerations.generate2TrackIdArrays(req, res, request, app, bodyParser)
 
   res.send('true'); 
 });   
@@ -72,8 +71,8 @@ app.post('/readUserGeneration', (req, res) => {
  * Variables that get set in this function:
  * sharedVar.mixedArray
  */
-app.get('/createPlaylist' , (req, res) => {
-    mix2TrackIdArrays.mix2Arrays();
+app.get('/createPlaylist', (req, res) => {
+    merge.mix2Arrays();
     completePlaylist.pushSongsIntoPlaylist(req, res, request);
 });
 

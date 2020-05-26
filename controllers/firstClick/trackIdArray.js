@@ -6,7 +6,7 @@
  * @param  {string} playlistTitle name of the playlist. Mostly for debugging purpose
  */
 
-const sharedVar = require('../sharedVariables');
+const sharedVar = require('../../sharedVariables');
 
 const generateTrackIdArray = 
 (playlistURI, playlistTitle, request) =>

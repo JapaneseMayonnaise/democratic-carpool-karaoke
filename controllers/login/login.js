@@ -1,7 +1,8 @@
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config')[env];
+const config = require('../../config')[env];
+const randomString = require('./randomString');
 
-const handleLogin = (req, res, randomString, stateKey, querystring, client_id ) => {
+const handleLogin = (req, res, stateKey, querystring, client_id ) => {
       let state = randomString.generateRandomString(16);
       
       res.cookie(stateKey, state);

@@ -1,4 +1,4 @@
-const sharedVar = require('../sharedVariables');
+const sharedVar = require('../../sharedVariables');
 
 const generatePlaylistUrl = (req, res, request) => {
   const create_a_playlist_bodyData =
