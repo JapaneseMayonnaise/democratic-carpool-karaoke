@@ -1,11 +1,6 @@
-const env = process.env.NODE_ENV || 'development';
-const config = require('../config')[env];
 const sharedVar = require('../sharedVariables');
 
 const generatePlaylistUrl = (req, res, request) => {
-   /**
-   * create a playlist
-   */ 
   const create_a_playlist_bodyData =
   {
     name: req.body.playlistName,
@@ -48,10 +43,6 @@ const generatePlaylistUrl = (req, res, request) => {
       res.send('failed to create a playlist');
     }
   });
-
-    /**
-   * END OF create a playlist
-   */
 }
 
 module.exports = {
