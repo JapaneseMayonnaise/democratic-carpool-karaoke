@@ -5,7 +5,6 @@ const cors = require('cors');
 const dotenvConfig = require('dotenv').config();
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
-const stateKey = 'spotify_auth_state';
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -22,6 +21,7 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const port = process.env.PORT || 5000;
 const sharedVar = require('./config/sharedVariables');
+const stateKey = 'spotify_auth_state';
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -38,7 +38,7 @@ app.get('/login', (req, res) => {
 });
 
 /**
- * Spotify authorization process step 2/3;
+ * Spotify authorization process step 2&3/3;
  */
 app.get('/callback', (req, res) => {
   callback.handleCallback(req, res, stateKey, querystring, client_id, client_secret,request)

@@ -2,6 +2,16 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('../../config/config')[env];
 const randomString = require('./randomString');
 
+ /** 
+  * Requests authorization for information listed in scope.
+  *
+  * @param  {string} stateKey  cookie name, part of auth process
+  * @param  {string} querystring used to serialize an object into string 
+  * @param  {string} client_id this app's credential registered on Spotify SDK
+  * @param  {string} state random string to make sure there was no intervention while auth process
+  * @param  {string} scope what to request access permission for in order to create a playlist and add songs on user's account.
+  *  
+  */
 const handleLogin = (req, res, stateKey, querystring, client_id ) => {
       let state = randomString.generateRandomString(16);
       

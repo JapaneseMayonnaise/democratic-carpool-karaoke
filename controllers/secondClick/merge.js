@@ -1,10 +1,10 @@
 const sharedVar = require('../../config/sharedVariables');
 
+/**
+*  Mix 2 trackIdArrays. 
+*  Every 2 songs extracted from each trackIdArray.
+*/
 const mix2Arrays = () => {
-     /**
-     *  Mix 2 trackIdArrays. 
-     *  Every 2 songs extracted from each trackIdArray.
-     */
     let whereToInsert = 2;
     for(let i = 0; i < sharedVar.trackIdArray_User1.length; i++)
     {

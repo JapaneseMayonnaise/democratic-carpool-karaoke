@@ -2,8 +2,22 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('../../config/config')[env];
 const sharedVar = require('../../config/sharedVariables');
 
+/**
+ * Spotify authorization process step 2&3/3;
+ * Access to the Spotify web API by using access token if successful, 
+ * 2 imporatant variables get set in this module: sharedVar.access_token, sharedVar.user_id
+ * then redirect a user to redirect URI
+ * 
+ * @param  {string} stateKey cookie name, part of auth process
+ * @param  {string} querystring used to serialize an object into string 
+ * @param  {string} client_id this app's credential registered on Spotify SDK  
+ * @param  {string} client_secret this app's credential registered on Spotify SDK  
+ * @param  {string} state random string to make sure there was no intervention while auth process
+ * @param  {object} request used to send request to Spotify API endpoint
+ * @param  {object} code authorization code that can be exchanged for an access token
+ */
 const handleCallback = 
-(req, res, stateKey, querystring, client_id,client_secret, request) => 
+(req, res, stateKey, querystring, client_id, client_secret, request) => 
  {
    const code = req.query.code || null;
    const state = req.query.state || null;
@@ -40,10 +54,8 @@ const handleCallback =
      {
        if (!error && resp.statusCode === 200) {
  
-        sharedVar.access_token = body.access_token;
-         console.log("ACCESS TOKEN in handlecallback.js ",sharedVar.access_token);
-         
-         refresh_token = body.refresh_token;
+         sharedVar.access_token = body.access_token;         
+        //  refresh_token = body.refresh_token;
  
          let options =
          {
@@ -51,14 +63,9 @@ const handleCallback =
            headers: { 'Authorization': 'Bearer ' + sharedVar.access_token },
            json: true
          };
- 
-         /**
-          * Spotify authorization process step 3/3;
-          * Access to the Spotify web API by using access token
-          */
+
          request.get(options, (error, res, body) => {
            console.log('==================================== Authorization SUCCESS ====================================');
-           console.log("BODY ---> ", body);
            
            sharedVar.user_id = body.id;
          });

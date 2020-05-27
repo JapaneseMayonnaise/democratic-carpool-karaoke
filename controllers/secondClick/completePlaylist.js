@@ -1,9 +1,10 @@
 const sharedVar = require('../../config/sharedVariables');
 
+/**
+ * Push an array of mixed-generation trackIDs into the empty playlist you created,
+ * then redirect user to their spotify account.
+ */
 const pushSongsIntoPlaylist = (req, res, request) => {
-       /**
-     * Add songs to the playlist using the array of uris of songs
-     */
     const add_songs_bodyData =
     {
       uris: sharedVar.mixedArray

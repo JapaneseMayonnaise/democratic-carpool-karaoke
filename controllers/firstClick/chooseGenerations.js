@@ -1,10 +1,19 @@
 const sharedVar = require('../../config/sharedVariables');
 const trackIdArray = require('./trackIdArray');
 
-/**
-* Make 2 arrays based on user input
-*/
+ /** 
+  * Receive 2 user's birth year from front end then determine which playlist URI to assign. 
+  *
+  * @param  {object} request    used to send request to Spotify API endpoint
+  * @param  {object} app        espress instance
+  * @param  {object} bodyParser required express middleware for easy request body handling
+  * @param  {string} playlistURI_user1 Spotify playlist URI. to be passed to sharedVar.trackIdArray_User1 to fetch track IDs
+  * @param  {string} playlistTitle_user1 the playlist title of what is assigned in playlistURI_user1
+  * @param  {string} playlistURI_user2 Spotify playlist URI. to be passed to sharedVar.trackIdArray_User2 to fetch track IDs
+  * @param  {string} playlistTitle_user2 the playlist title of what is assigned in playlistURI_user2
+  */
 const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
+
   let playlistURI_user1, playlistTitle_user1, playlistURI_user2, playlistTitle_user2;
 
   switch(req.body.gen1)

@@ -1,16 +1,17 @@
-/** Take users' birth years as parameters, 
- * then get "track ids" from Spotify API endpoint accordingly, then make an array of 50 track ids which are meant to be merged into one eventually
- *
- * @param  {string} playlistURI  spotify playlist URI based on user's birth year
- * 
- * @param  {string} playlistTitle name of the playlist. Mostly for debugging purpose
- */
 
 const sharedVar = require('../../config/sharedVariables');
 
-const generateTrackIdArray = 
-(playlistURI, playlistTitle, request) =>
-{   
+ /** 
+  * Fetch maximum 50 trackIds from Spotify API endpoints and put them into an array, then return the array.
+  *
+  * @param  {array}  trackIdArray  has maximum 50 trackIDs. It gets generated for each user to be meerged later.
+  * @param  {string} playlistURI  spotify playlist URI picked based on user's birth year input
+  * @param  {string} playlistTitle the title of the Spotify playlist you are pulling. Mostly here for clarity.
+  * @param  {object} request used to send request to Spotify API endpoint
+  *  
+  */
+const generateTrackIdArray = (playlistURI, playlistTitle, request) => {   
+
    let trackIdArray = [];
 
   /**
@@ -29,7 +30,6 @@ const generateTrackIdArray =
       if(!error && resp.statusCode === 200 || 201)
       {
       console.log("============= SUCCESS: Retrieved URI For " + playlistTitle + " ==============");
-      console.log("body", body);
       
       }
       else

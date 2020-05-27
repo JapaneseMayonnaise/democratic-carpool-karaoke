@@ -1,5 +1,10 @@
 const sharedVar = require('../../config/sharedVariables');
 
+ /** 
+  * Generate a playlist on the user's Spotufy account. At this point the playlist has no songs in it. 
+  * When generate the playlist, in turn you get and set a playlistID(sharedVar.playlistId) and playlistURL(sharedVar.playlistURL.)  
+  * 
+  */
 const generatePlaylistUrl = (req, res, request) => {
   const create_a_playlist_bodyData =
   {
@@ -26,8 +31,6 @@ const generatePlaylistUrl = (req, res, request) => {
       sharedVar.playlistURL = body.external_urls.spotify;
 
       console.log("============= SUCCESS: Created a playlist  ==============");
-      console.log('sharedVar.playlistId: ' + sharedVar.playlistId);
-      console.log('sharedVar.playlistURL: ' + body.external_urls.spotify);
     }
     else
     {
