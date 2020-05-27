@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './PlaylistGenerator.css';
+import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import Footer from '../Footer/Footer'
+import './PlaylistGenerator.module.css'
 
 class PlaylistGenerator extends React.Component
 {
@@ -80,6 +80,16 @@ class PlaylistGenerator extends React.Component
                   <Form.Control as="select" className="user2-form-multi-select-options" name="user2Generation" onChange={this.setValue} size="lg">
                     <option value=''>Choose...</option>
                     <option value='1930'>Before 1930s</option>
+                    <option value='1940'>1941</option>
+                    <option value='1940'>1942</option>
+                    <option value='1940'>1943</option>
+                    <option value='1940'>1944</option>
+                    <option value='1940'>1945</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1940'>1940s</option>
                     <option value='1940'>1940s</option>
                     <option value='1950'>1950s</option>
                     <option value='1960'>1960s</option>
@@ -115,9 +125,7 @@ class PlaylistGenerator extends React.Component
             </Button>
           }
         </div>
-        <Row>
-          <Col className='h6 playlistgenerator-photo-credit fixed-bottom text-center'>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
-        </Row>
+        <Footer />
       </>
     );
     }

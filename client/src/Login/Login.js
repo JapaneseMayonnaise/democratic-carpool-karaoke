@@ -1,44 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
+import '../../node_modules/bulma/css/bulma.css'
+// import './Login.module.css';
 import './Login.css';
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
-class Login extends React.Component
-{
+class Login extends React.Component {
   render()
   {
     return (
-      <>
-        <div className="Login_container">
-          <Row>
-            <Col className='h1 d' xs={{span:1, offset:0}}>D</Col>
-            <Col className='h4 description' xs={{span:1, offset:0}}>Democratic</Col>
-          </Row>
-          <Row>
-            <Col className='h1 c' xs={{span:1, offset:0}}>C</Col>
-            <Col className='h4 description' xs={{span:1, offset:0}}>Carpool</Col>
-          </Row>
-          <Row>
-            <Col className='h1 k' xs={{span:1, offset:0}}>K</Col>
-            <Col className='h4 description' xs={{span:1, offset:0}}>Karaoke</Col>
-          </Row>
-          <Row>
-            <Button className='login-button' 
-              variant="light" 
-              type="submit"
+      <section className="hero is-fullheight">
+        <div className="hero-body right no-padding-top">
+          <div className="has-text-right">
+            <h1 className="title one-character">
+              D
+            </h1>
+            <h2 className="subtitle">
+              democratic
+            </h2>
+            <h1 className="title one-character">
+              C
+            </h1>
+            <h2 className="subtitle">
+              carpool
+            </h2>
+            <h1 className="title one-character">
+              K
+            </h1>
+            <h2 className="subtitle">
+              karaoke
+            </h2>
+            <button 
+              className="button is-danger size"
               // href='https://democratic-carpool-karaoke.herokuapp.com/login' 
               href='http://localhost:5000/login' 
-              size="lg">
-               Join The Party
-            </Button>
-          </Row>
+            >
+                Join The Party
+            </button>
+          </div>
         </div>
-          <Row>
-            <Col className='h6 login-photo-credit fixed-bottom text-center'>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
-          </Row>
-      </>
-    )
+
+        <div className="hero-foot">
+          <div className="">
+            <p>
+              Copyright 2020 <a href="https://shimba.dev">Elliot Sbimba</a>
+            </p>
+            <p>
+              Photo credit: <a href="https://unsplash.com/@josefhu15">Jose Hernandez-Uribe</a>
+            </p>
+          </div>
+        </div>
+      </section>   
+   )
   }
 }
 

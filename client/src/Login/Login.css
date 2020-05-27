@@ -1,45 +1,63 @@
-body, html {
-  height: 100%;
-  width: 100%;
+.hero {
+   background:red url(./images/background-desktop.jpg) center / cover
 }
 
-html {
-  font-size: 62.5%;
+.one-character {
+   font-size: 11rem;
 }
 
-body {
-
+.top, 
+.right, 
+.bottom, 
+.left {
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-.Login_container {
-  height: 100%;
-  padding-left: 10px;
-  overflow: hidden;
+.top {
+   align-items: flex-start;
 }
 
-.login-button {
-  margin-left: 8px;
-  font-size: 3em;
+.bottom {
+   align-items: flex-end;
 }
 
-.d, .c, .k {
-  font-size: 15em;
-  margin-left: 5px;
-  padding-left: 0;
-  margin-top: 1.6%;
-  padding-right: 0;
+.right {
+   justify-content: flex-end;
 }
 
-.description {
-  margin-top: 3%;
-  padding-left: 0;
-  font-size: 4em;
+
+.no-padding-bottom {
+   padding-bottom: none !important;
 }
 
-.login-photo-credit a {
-  color: #f00;
+.no-padding-top {
+   padding-top: none !important;
 }
 
-.login-photo-credit {
-  font-size: 1.5em;
+@media (max-width: 1024px) {
+   .one-character {
+      font-size: 11rem;
+   }
+}
+
+@media (max-width: 768px) {
+   .hero {
+      background:red url(./images/background-touch.jpg) center / cover
+   }
+
+   .one-character {
+      font-size: 7rem;
+   }
+}
+
+@media (max-width: 350px) {
+   .hero {
+      background:red url(./images/background-touch.jpg) center / cover
+   }
+
+   .one-character {
+      font-size: 6rem;
+   }
 }
