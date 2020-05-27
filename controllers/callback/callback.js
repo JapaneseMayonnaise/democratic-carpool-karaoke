@@ -1,6 +1,6 @@
 const env = process.env.NODE_ENV || 'development';
-const config = require('../../config')[env];
-const sharedVar = require('../../sharedVariables');
+const config = require('../../config/config')[env];
+const sharedVar = require('../../config/sharedVariables');
 
 const handleCallback = 
 (req, res, stateKey, querystring, client_id,client_secret, request) => 

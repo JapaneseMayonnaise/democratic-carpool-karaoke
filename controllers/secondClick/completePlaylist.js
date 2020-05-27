@@ -1,4 +1,4 @@
-const sharedVar = require('../../sharedVariables');
+const sharedVar = require('../../config/sharedVariables');
 
 const pushSongsIntoPlaylist = (req, res, request) => {
        /**
@@ -19,12 +19,12 @@ const pushSongsIntoPlaylist = (req, res, request) => {
       body: add_songs_bodyData
     };
 
-    request.post(addSongsOptions, (error, respo, bodyy) =>
+    request.post(addSongsOptions, (error, resp, body) =>
     {
-      if(!error && respo.statusCode === 200 || 201)
+      if(!error && resp.statusCode === 200 || 201)
       {
         console.log("============= SUCCESS: Merged playlists  ==============");
-        console.log(bodyy);
+        console.log(body);
       }
       else
       {

@@ -1,4 +1,4 @@
-const sharedVar = require('../../sharedVariables');
+const sharedVar = require('../../config/sharedVariables');
 const trackIdArray = require('./trackIdArray');
 
 /**

@@ -1,4 +1,4 @@
-const sharedVar = require('../../sharedVariables');
+const sharedVar = require('../../config/sharedVariables');
 
 const mix2Arrays = () => {
      /**
@@ -14,7 +14,6 @@ const mix2Arrays = () => {
     }
 
     sharedVar.mixedArray = sharedVar.trackIdArray_User2;
-    console.log('sharedVar.mixedArray', sharedVar.mixedArray);
 }
 
 module.exports = {

@@ -6,13 +6,11 @@
  * @param  {string} playlistTitle name of the playlist. Mostly for debugging purpose
  */
 
-const sharedVar = require('../../sharedVariables');
+const sharedVar = require('../../config/sharedVariables');
 
 const generateTrackIdArray = 
 (playlistURI, playlistTitle, request) =>
-{
-   console.log("generateTrackIdArray sharedVar.access_token", sharedVar.access_token);
-   
+{   
    let trackIdArray = [];
 
   /**
@@ -53,7 +51,7 @@ const generateTrackIdArray =
          trackIdArray.push(body.items[i].track.uri);
       }
 
-      console.log('trackIdArray generated🦁:', trackIdArray, trackIdArray.length);     
+      console.log('trackIdArray generated🦁:');     
 
    })
 

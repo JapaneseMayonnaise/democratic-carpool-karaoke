@@ -1,5 +1,5 @@
 const env = process.env.NODE_ENV || 'development';
-const config = require('../../config')[env];
+const config = require('../../config/config')[env];
 const randomString = require('./randomString');
 
 const handleLogin = (req, res, stateKey, querystring, client_id ) => {

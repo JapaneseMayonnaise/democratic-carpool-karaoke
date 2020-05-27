@@ -32,8 +32,8 @@ class PlaylistGenerator extends React.Component
   sendUsersGeneration = async e => {
     e.preventDefault();
 
-    // const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/firstClick';
-    const UriTofetchFrom = 'http://localhost:5000/firstClick';
+    const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/firstClick';
+    // const UriTofetchFrom = 'http://localhost:5000/firstClick';
 
     const response = await fetch(UriTofetchFrom,
     {
@@ -104,8 +104,8 @@ class PlaylistGenerator extends React.Component
             variant="outline-success" 
             type="button" 
             
-            // href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
-            href='http://localhost:5000/secondClick' 
+            href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
+            // href='http://localhost:5000/secondClick' 
             size="lg">
               Done! Go to your Spotify account
             </Button>

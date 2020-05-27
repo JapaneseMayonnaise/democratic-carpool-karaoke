@@ -17,11 +17,11 @@ const merge = require('./controllers/secondClick/merge');
 const completePlaylist = require('./controllers/secondClick/completePlaylist');
 
 const env = process.env.NODE_ENV || 'development';
-const config = require('./config')[env];
+const config = require('./config/config')[env];
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const port = process.env.PORT || 5000;
-const sharedVar = require('./sharedVariables');
+const sharedVar = require('./config/sharedVariables');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

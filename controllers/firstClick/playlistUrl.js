@@ -1,4 +1,4 @@
-const sharedVar = require('../../sharedVariables');
+const sharedVar = require('../../config/sharedVariables');
 
 const generatePlaylistUrl = (req, res, request) => {
   const create_a_playlist_bodyData =
@@ -20,9 +20,6 @@ const generatePlaylistUrl = (req, res, request) => {
 
   request.post(playlistOptions, (error, resp, body) =>
   {
-    console.log("responce body from spotify --->", body);
-    console.log("error => " + JSON.stringify(error));
-
     if(!error && resp.statusCode === 200 || 201)
     {
       sharedVar.playlistId = body.id;
