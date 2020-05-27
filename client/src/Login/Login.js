@@ -25,13 +25,11 @@ class Login extends React.Component
           </Row>
           <Row>
             <Button className='login-button' 
-            variant="outline-light" 
-            type="submit"
-
-            // href='https://democratic-carpool-karaoke.herokuapp.com/login' 
-            href='http://localhost:5000/login' 
-
-            size="lg">
+              variant="light" 
+              type="submit"
+              // href='https://democratic-carpool-karaoke.herokuapp.com/login' 
+              href='http://localhost:5000/login' 
+              size="lg">
                Join The Party
             </Button>
           </Row>

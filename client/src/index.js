@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
-import Login from './Login';
-import PlaylistGenerator from './PlaylistGenerator';
+import Login from './Login/Login';
+import PlaylistGenerator from './PlaylistGenerator/PlaylistGenerator';
 import * as serviceWorker from './serviceWorker';
 import WebFont from 'webfontloader';
 

@@ -8,11 +8,7 @@ html {
 }
 
 body {
-  background-image: url(./login_background.jpg);
-  background-position: left bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
+
 }
 
 .Login_container {
