@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import WebFont from 'webfontloader';
 import Login from './Login/Login';
 import PlaylistGenerator from './PlaylistGenerator/PlaylistGenerator';
-import WebFont from 'webfontloader';
-import './index.css';
+// import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 WebFont.load({

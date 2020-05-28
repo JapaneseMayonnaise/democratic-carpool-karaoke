@@ -1,12 +1,11 @@
-.hero-body {
-   /* font-family: 'Modak', cursive; */
-   padding-bottom: 2px;
-   padding-top: 2px;
+/* .hero {
+   background:hsl(348, 100%, 61%) url(../images/background-desktop.jpg) center / cover;
+   font-family: 'Permanent Marker', cursive;
 }
 
-.hero {
-   background:red url(../images/background-desktop.jpg) center / cover;
-   font-family: 'Permanent Marker', cursive;
+.hero-body {
+   padding-bottom: 2px;
+   padding-top: 2px;
 }
 
 .title, 
@@ -39,12 +38,12 @@
    justify-content: flex-end;
 }
 
-a:hover {
-   text-decoration: none;
-}
-
 a {
    color: #fff;
+} 
+
+a:hover  {
+   text-decoration: none;
 }
 
 .one-character {
@@ -83,9 +82,50 @@ a {
    font-size: 1rem !important;
  }
 
+ .neon {
+   -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+   -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+   animation: neon1 .4s ease-in-out infinite alternate;
+}
+
+.neon:hover {
+   color: #F01177;
+   -webkit-animation: none;
+   -moz-animation: none;
+   animation: none;
+}
+
+@-webkit-keyframes neon1 {
+   from {
+     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+   }
+   to {
+     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+   }
+ }
+
+ @-moz-keyframes neon1 {
+   from {
+     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+   }
+   to {
+     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+   }
+ }
+
+ @keyframes neon1 {
+   from {
+     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+   }
+   to {
+     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+   }
+ }
+
+
 @media (max-width: 768px) {
    .hero {
-      background:red url(../images/background-touch.jpg) center / cover
+      background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
    }
 
    .one-character {
@@ -111,7 +151,7 @@ a {
 
 @media (max-width: 420px) {
    .hero {
-      background:red url(../images/background-touch.jpg) center / cover
+      background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
    }
 
    .one-character {
@@ -130,4 +170,4 @@ a {
       margin-top: 20px;
    }
 
-}
+} */
