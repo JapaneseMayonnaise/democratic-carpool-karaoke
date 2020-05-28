@@ -1,0 +1,63 @@
+/* SPACING AND FONT SIZE*/
+ .labelSize {
+    font-size: 2rem;
+ }
+
+ .generationPickerSpacing {
+    padding-bottom: 3rem;
+ }
+
+ .labelColour {
+    color: #000;
+ }
+ /* SPACING AND SIZE*/
+ 
+ /* COLOUR  */
+ 
+ /* COLOUR  */
+ 
+ /* DISPLAY, ALIGHMENT */
+ 
+ /* DISPLAY, ALIGHMENT */
+ 
+ /* MISC */
+
+ /* MISC */
+ 
+ /* MEDIA QUERY */
+ 
+ @media (max-width: 768px) {
+   .labelSize {
+      font-size: 1.5rem;
+   }
+  
+   .generationPickerSpacing {
+      padding-bottom: 2rem;
+   }
+
+   .labelColour {
+      color: #fff;
+   }
+ }
+ 
+ @media (max-width: 640px) {
+   .labelColour {
+      color: #fff;
+   }
+ }
+ 
+ @media (max-width: 420px) {
+   .labelSize {
+      font-size: 1.3rem;
+   }
+  
+   .generationPickerSpacing {
+      padding-bottom: 1.5rem;
+   }
+
+   .labelColour {
+      color: #fff;
+   }
+ }
+ 
+ /* MEDIA QUERY */

@@ -15,14 +15,7 @@
 }
 
 .gapBetweenButtonAndTitle {
-  margin-top: 30px;
-}
-.oneCharacter {
-  font-size: 11rem;
-}
-
-.postCharacter {
-  font-size: 1.5rem;
+  margin-top: 50px;
 }
 
 .buttonSize {
@@ -33,13 +26,19 @@
   font-family: 'Permanent Marker', cursive;
 }
 
+.labelSize {
+  font-size: 2rem;
+}
+
+.labelColour {
+  color: #000;
+}
+
+
+
 /* SPACING AND SIZE*/
 
 /* COLOUR  */
-
-.titleColour {
-  color: #000;
-}
 
 a {
   color: #fff;
@@ -52,23 +51,24 @@ a:hover  {
 /* COLOUR  */
 
 /* DISPLAY, ALIGHMENT */
-.isInlineBlock {
+
+/* .isInlineBlock {
   display: inline-block;
-}
+} */
 
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* .right {
+  display: flex; */
+  /* justify-content: center; */
+  /* align-items: center;
+} */
 
-.top {
+/* .top {
   align-items: flex-start;
 }
 
 .bottom {
   align-items: flex-end;
-}
+} */
 
 .right {
   justify-content: flex-end;
@@ -76,11 +76,11 @@ a:hover  {
 
 /* DISPLAY, ALIGHMENT */
 
+/* MISC */
 .heroBackground {
   background:hsl(348, 100%, 61%) url(../images/background-desktop.jpg) center / cover;
   font-family: 'Permanent Marker', cursive;
 }
-
 
 .neon {
   -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -115,6 +115,8 @@ a:hover  {
   }
 }
 
+/* MISC */
+
 /* MEDIA QUERY */
 
 @media (max-width: 768px) {
@@ -143,10 +145,21 @@ a:hover  {
      margin-top: 40px;
   }
 
+  .labelSize {
+    font-size: 1.5rem;
+ }
+
+ .labelColour {
+    color: #fff;
+ }
 }
 
 @media (max-width: 640px) {
   .titleColour {
+    color: #fff;
+  }
+
+  .labelColour {
     color: #fff;
   }
 
@@ -174,17 +187,24 @@ a:hover  {
    }
 
   .gapBetweenButtonAndTitle {
-     margin-top: 0px;
+     margin-top: 15px;
   }
   
   .titleColour {
     color: #fff;
   }
 
+  .labelSize {
+    font-size: 1.3rem;
+  }
+  
+  .labelColour {
+    color: #fff;
+  }
+
   .stayBlack {
     color: #000;
   }
-
 }
 
 /* MEDIA QUERY */

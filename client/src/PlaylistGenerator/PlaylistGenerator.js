@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import SelectGeneration from './SelectGeneration/SelectGeneration'
 import '../../node_modules/bulma/css/bulma.css'
 import style from  './PlaylistGenerator.module.css';
 
@@ -20,8 +21,8 @@ class PlaylistGenerator extends React.Component
 
   setValue = (e) =>
   {
-    // console.log("value: "+ e.target.value);
-    // console.log("name: "+ [e.target.name]);
+    console.log("value: "+ e.target.value);
+    console.log("name: "+ [e.target.name]);
 
     this.setState({
       [e.target.name]: e.target.value
@@ -54,96 +55,60 @@ class PlaylistGenerator extends React.Component
     return(
       <section className={`hero is-fullheight ${style.heroBackground}`}>
         <div className="hero-head"></div>
-        <div className={`hero-body ${style.right} ${style.heroBodySpacing}`}>
-          
-            <div className="field">
-              <div className="label">
-                What year were you born in?
-              </div>
-              <div 
-                className="control" 
-                name="user1Generation" 
-                onChange={this.setValue}
-              >
-                <div className="select">
-                  <select name="" id="">
-                    <option value=''>Choose...</option>
-                    <option value='1930'>Before 1930s</option>
-                    <option value='1940'>1940s</option>
-                    <option value='1950'>1950s</option>
-                    <option value='1960'>1960s</option>
-                    <option value='1970'>1970s</option>
-                    <option value='1980'>1980s</option>
-                    <option value='1990'>1990s</option>
-                    <option value='2000'>2000s</option>
-                    <option value='2010'>After 2010s</option>
-                    <option value=''>Don't even ask</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+        <div className={`hero-body ${style.right}`}>
+          {/* Memo to self: This div(id="justStackPlz") is here to stack all fields, since Bulma horizontally center everything in hero-body if I didn't have this wrapper */}
+          <div id="justStackPlz" className="has-text-right">
+            <SelectGeneration 
+              labelText='What year were you born in?'
+              selectName="user1Generation"
+              setValue={this.setValue}
+            />
 
+            <SelectGeneration 
+              labelText='What year were you born in?'
+              selectName="user2Generation"
+              setValue={this.setValue} 
+            />
+              
             <div className="field">
-              <div className="label">
-                What year was your carpool buddy born in?
-              </div>
-              <div 
-                className="control"
-                name="user2Generation"
-                onChange={this.setValue}
-              >
-              <div className="select">
-              <select name="" id="">
-                    <option value=''>Choose...</option>
-                    <option value='1930'>Before 1930s</option>
-                    <option value='1940'>1940s</option>
-                    <option value='1950'>1950s</option>
-                    <option value='1960'>1960s</option>
-                    <option value='1970'>1970s</option>
-                    <option value='1980'>1980s</option>
-                    <option value='1990'>1990s</option>
-                    <option value='2000'>2000s</option>
-                    <option value='2010'>After 2010s</option>
-                    <option value=''>Don't even ask</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div className="field">
-              <div className="label">
+              <label className={`label ${style.labelSize} ${style.stayBlack} ${style.labelColour}`}>
                 Playlist Title?
-              </div>
-              <div>
+              </label>
+              <div className="control">
                 <input 
-                  className="control" 
+                  className="input is-danger"
+                  type="text"
                   name="playlistName" 
                   onChange={this.setValue} 
-                  type="text" 
                   placeholder="Democratic Carpool Karaoke" 
                 />
               </div>
             </div>
 
             {this.state.isPlaylistMadeYet ?
-            <button 
-              className='button' 
-              type="submit" 
+            <a
               // href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
               href='http://localhost:5000/secondClick' 
             >
-              Done! Go to your Spotify account
-            </button>
+              <button 
+                className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon} ${style.gapBetweenButtonAndTitle}`}
+                type="submit" 
+              >
+                Done! Go to your Spotify account
+              </button>
+            </a>
             :
 
             <button 
-              className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon}`}
+              className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.gapBetweenButtonAndTitle} ${style.neon}`}
               type="submit"
               onClick={this.sendUsersGeneration} 
             >
              Create Playlist
             </button>
-          }
+            }
+        </div>
+
         </div>
 
         <div className="hero-foot">
