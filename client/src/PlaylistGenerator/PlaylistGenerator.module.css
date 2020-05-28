@@ -1,55 +1,190 @@
-/* body, html {
-  height: 100%;
+/* SPACING AND FONT SIZE*/
+
+.heroFootSpacing {
+  /* margin-bottom: 4px; */
+  margin-left: 4px;
 }
 
-html {
-  font-size: 62.5%;
+.heroBodySpacing {
+  padding: 10px 24px;
+} 
+
+.tagSpacing {
+  margin-bottom: 4px;
+  font-size: 1rem !important;
 }
 
-.PlaylistGenerator_container {
-  padding: 0;
-  margin: 0;
-  padding-top: 8%;
-  height: 100%;
+.gapBetweenButtonAndTitle {
+  margin-top: 30px;
+}
+.oneCharacter {
+  font-size: 11rem;
 }
 
-.user1-form-multi-select {
-  font-size: 4em;
+.postCharacter {
+  font-size: 1.5rem;
 }
 
-.user2-form-multi-select {
-  margin-top: 4%;
-  font-size: 4em;
+.buttonSize {
+  font-size: 2rem;
 }
 
-.user1-form-multi-select-options {
-  font-size: 0.6em;
+.buttonFontAdjust {
+  font-family: 'Permanent Marker', cursive;
 }
 
-.user2-form-multi-select-options {
-  font-size: 0.6em;
+/* SPACING AND SIZE*/
+
+/* COLOUR  */
+
+.titleColour {
+  color: #000;
 }
 
-.playlist-name {
-  margin-top: 4%;
-  font-size: 4em;
+a {
+  color: #fff;
+} 
+
+a:hover  {
+  text-decoration: none;
 }
 
-.playlist-name-form {
-  font-size: 0.6em;
+/* COLOUR  */
+
+/* DISPLAY, ALIGHMENT */
+.isInlineBlock {
+  display: inline-block;
 }
 
-.playlistgenerator-button {
-  margin-top: 3%;
-  margin-left: 15px;
-  font-size: 3em;
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.playlistgenerator-photo-credit a {
-  color: #f00;
+.top {
+  align-items: flex-start;
 }
 
-.playlistgenerator-photo-credit {
-  font-size: 1.5em;
-} */
+.bottom {
+  align-items: flex-end;
+}
 
+.right {
+  justify-content: flex-end;
+}
+
+/* DISPLAY, ALIGHMENT */
+
+.heroBackground {
+  background:hsl(348, 100%, 61%) url(../images/background-desktop.jpg) center / cover;
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+.neon {
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 .4s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 768px) {
+  .hero {
+     background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
+  }
+
+  .oneCharacter {
+     font-size: 10rem;
+  }
+
+  .buttonSize {
+     font-size: 1.4rem;
+  }
+
+  .postCharacter {
+     font-size: 1.3rem;
+  }
+
+  .tagSpacing {
+     margin-bottom: 4px;
+     font-size: 0.8rem !important;
+   }
+
+   .gapBetweenButtonAndTitle {
+     margin-top: 40px;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .titleColour {
+    color: #fff;
+  }
+
+  .stayBlack {
+    color: #000;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+     background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
+  }
+
+  .oneCharacter {
+     font-size: 8rem;
+  }
+
+  .buttonSize {
+     font-size: 1.2rem;
+  }
+
+  .tagSpacing {
+     margin-bottom: 4px;
+     font-size: 0.6rem !important;
+   }
+
+  .gapBetweenButtonAndTitle {
+     margin-top: 0px;
+  }
+  
+  .titleColour {
+    color: #fff;
+  }
+
+  .stayBlack {
+    color: #000;
+  }
+
+}
+
+/* MEDIA QUERY */

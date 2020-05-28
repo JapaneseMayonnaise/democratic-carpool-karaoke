@@ -1,7 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import '../../node_modules/bulma/css/bulma.css'
-// import './PlaylistGenerator.module.css'
-import './PlaylistGenerator.css'
+import style from  './PlaylistGenerator.module.css';
 
 class PlaylistGenerator extends React.Component
 {
@@ -51,85 +52,92 @@ class PlaylistGenerator extends React.Component
   render()
   {
     return(
-        <div className="PlaylistGenerator_container">
-          <div className="is-grouped">
-
-            <div className="field user1-form-multi-select">
+      <section className={`hero is-fullheight ${style.heroBackground}`}>
+        <div className="hero-head"></div>
+        <div className={`hero-body ${style.right} ${style.heroBodySpacing}`}>
+          
+            <div className="field">
               <div className="label">
                 What year were you born in?
               </div>
-              <div className="control user1-form-multi-select-options" name="user1Generation" onChange={this.setValue} size="lg">
+              <div 
+                className="control" 
+                name="user1Generation" 
+                onChange={this.setValue}
+              >
                 <div className="select">
-                  <option value=''>Choose...</option>
-                  <option value='1930'>Before 1930s</option>
-                  <option value='1940'>1940s</option>
-                  <option value='1950'>1950s</option>
-                  <option value='1960'>1960s</option>
-                  <option value='1970'>1970s</option>
-                  <option value='1980'>1980s</option>
-                  <option value='1990'>1990s</option>
-                  <option value='2000'>2000s</option>
-                  <option value='2010'>After 2010s</option>
-                  <option value=''>Don't even ask</option>
+                  <select name="" id="">
+                    <option value=''>Choose...</option>
+                    <option value='1930'>Before 1930s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1950'>1950s</option>
+                    <option value='1960'>1960s</option>
+                    <option value='1970'>1970s</option>
+                    <option value='1980'>1980s</option>
+                    <option value='1990'>1990s</option>
+                    <option value='2000'>2000s</option>
+                    <option value='2010'>After 2010s</option>
+                    <option value=''>Don't even ask</option>
+                  </select>
                 </div>
               </div>
             </div>
 
-            <div className="field user2-form-multi-select">
+            <div className="field">
               <div className="label">
                 What year was your carpool buddy born in?
               </div>
-              <div as="select" className="control user2-form-multi-select-options" name="user2Generation" onChange={this.setValue} size="lg">
+              <div 
+                className="control"
+                name="user2Generation"
+                onChange={this.setValue}
+              >
               <div className="select">
-
-                <option value=''>Choose...</option>
-                <option value='1930'>Before 1930s</option>
-                <option value='1940'>1941</option>
-                <option value='1940'>1942</option>
-                <option value='1940'>1943</option>
-                <option value='1940'>1944</option>
-                <option value='1940'>1945</option>
-                <option value='1940'>1940s</option>
-                <option value='1940'>1940s</option>
-                <option value='1940'>1940s</option>
-                <option value='1940'>1940s</option>
-                <option value='1940'>1940s</option>
-                <option value='1940'>1940s</option>
-                <option value='1950'>1950s</option>
-                <option value='1960'>1960s</option>
-                <option value='1970'>1970s</option>
-                <option value='1980'>1980s</option>
-                <option value='1990'>1990s</option>
-                <option value='2000'>2000s</option>
-                <option value='2010'>After 2010s</option>
-                <option value=''>Don't even ask</option>
+              <select name="" id="">
+                    <option value=''>Choose...</option>
+                    <option value='1930'>Before 1930s</option>
+                    <option value='1940'>1940s</option>
+                    <option value='1950'>1950s</option>
+                    <option value='1960'>1960s</option>
+                    <option value='1970'>1970s</option>
+                    <option value='1980'>1980s</option>
+                    <option value='1990'>1990s</option>
+                    <option value='2000'>2000s</option>
+                    <option value='2010'>After 2010s</option>
+                    <option value=''>Don't even ask</option>
+                  </select>
                 </div>
               </div>
             </div>
 
-            <div className="field playlist-name">
-            <div className="label">
-              Playlist Title?
-            </div>
+            <div className="field">
+              <div className="label">
+                Playlist Title?
+              </div>
               <div>
-                <div className="control playlist-name-form" name="playlistName" onChange={this.setValue} type="text" placeholder="Democratic Carpool Karaoke" size="lg"/>
+                <input 
+                  className="control" 
+                  name="playlistName" 
+                  onChange={this.setValue} 
+                  type="text" 
+                  placeholder="Democratic Carpool Karaoke" 
+                />
               </div>
             </div>
 
-          </div>
-
-          {this.state.isPlaylistMadeYet ?
+            {this.state.isPlaylistMadeYet ?
             <button 
-              className='playlistgenerator-button' 
-              type="button" 
+              className='button' 
+              type="submit" 
               // href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
               href='http://localhost:5000/secondClick' 
             >
               Done! Go to your Spotify account
             </button>
             :
+
             <button 
-              className='playlistgenerator-button'
+              className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon}`}
               type="submit"
               onClick={this.sendUsersGeneration} 
             >
@@ -137,8 +145,26 @@ class PlaylistGenerator extends React.Component
             </button>
           }
         </div>
+
+        <div className="hero-foot">
+          <div className={`${style.marginLeft} ${style.heroFootSpacing}`}>
+              <span className={`tag is-danger ${style.tagSpacing}`}>
+                Copyright 2020 &nbsp; 
+                <a href="https://shimba.dev">
+                Elliot Shimba
+                </a> &nbsp; | &nbsp;
+                <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">
+                <FontAwesomeIcon icon={faGithub} /> Source code
+                </a>
+              </span> <br />
+              <span className={`tag is-danger ${style.tagSpacing}`}>
+                Photo credit : &nbsp; <a href="https://unsplash.com/@josefhu15">Jose Hernandez-Uribe</a>
+              </span>
+          </div>
+        </div>
+      </section>   
     );
-    }
+  }
 }
 
 export default PlaylistGenerator;
