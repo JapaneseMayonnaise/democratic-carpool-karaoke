@@ -1,9 +1,21 @@
+.hero-body {
+   /* font-family: 'Modak', cursive; */
+   padding-bottom: 2px;
+   padding-top: 2px;
+}
+
 .hero {
-   background:red url(./images/background-desktop.jpg) center / cover
+   background:red url(../images/background-desktop.jpg) center / cover;
+   font-family: 'Permanent Marker', cursive;
+}
+
+.title, 
+.subtitle {
+   color:black;
 }
 
 .one-character {
-   font-size: 11rem;
+   font-size: 16rem;
 }
 
 .top, 
@@ -27,37 +39,95 @@
    justify-content: flex-end;
 }
 
-
-.no-padding-bottom {
-   padding-bottom: none !important;
+a:hover {
+   text-decoration: none;
 }
 
-.no-padding-top {
-   padding-top: none !important;
+a {
+   color: #fff;
 }
 
-@media (max-width: 1024px) {
-   .one-character {
-      font-size: 11rem;
-   }
+.one-character {
+   font-size: 11rem;
 }
+
+.post-character {
+   font-size: 1.5rem;
+}
+
+.button-size {
+   font-size: 2rem;
+}
+
+.margin-bottom {
+   margin-bottom: 4px;
+}
+
+.margin-left {
+   margin-left: 4px;
+}
+
+.gap-between-button-and-title {
+   margin-top: 60px;
+}
+
+.is-inline-block {
+   display: inline-block;
+}
+
+.button-font-adjust {
+   font-family: 'Permanent Marker', cursive;
+}
+
+.responsive-size {
+   font-size: 1rem !important;
+ }
 
 @media (max-width: 768px) {
    .hero {
-      background:red url(./images/background-touch.jpg) center / cover
+      background:red url(../images/background-touch.jpg) center / cover
+   }
+
+   .one-character {
+      font-size: 9rem;
+   }
+
+   .button-size {
+      font-size: 1.4rem;
+   }
+
+   .post-character {
+      font-size: 1.3rem;
+   }
+
+   .responsive-size {
+      font-size: 0.8rem !important;
+    }
+
+    .gap-between-button-and-title {
+      margin-top: 40px;
+   }
+}
+
+@media (max-width: 420px) {
+   .hero {
+      background:red url(../images/background-touch.jpg) center / cover
    }
 
    .one-character {
       font-size: 7rem;
    }
-}
 
-@media (max-width: 350px) {
-   .hero {
-      background:red url(./images/background-touch.jpg) center / cover
+   .button-size {
+      font-size: 1.2rem;
    }
 
-   .one-character {
-      font-size: 6rem;
+   .responsive-size {
+      font-size: 0.6rem !important;
+    }
+
+    .gap-between-button-and-title {
+      margin-top: 20px;
    }
+
 }
