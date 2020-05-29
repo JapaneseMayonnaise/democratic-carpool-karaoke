@@ -59,13 +59,13 @@ class PlaylistGenerator extends React.Component
           {/* Memo to self: This div(id="justStackPlz") is here to stack all fields, since Bulma horizontally center everything in hero-body if I didn't have this wrapper */}
           <div id="justStackPlz" className="has-text-right">
             <SelectGeneration 
-              labelText='What year were you born in?'
+              labelText='Birth Year: User 1'
               selectName="user1Generation"
               setValue={this.setValue}
             />
 
             <SelectGeneration 
-              labelText='What year were you born in?'
+              labelText='Birth Year: User 2'
               selectName="user2Generation"
               setValue={this.setValue} 
             />
@@ -74,7 +74,7 @@ class PlaylistGenerator extends React.Component
               <label 
                 className={`label ${style.labelSize}  ${style.labelColour} ${style.titleLabel} `}
               >
-                Playlist Title?
+                Playlist Name
               </label>
               <div className="control">
                 <input 
@@ -96,7 +96,7 @@ class PlaylistGenerator extends React.Component
                 className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon} ${style.gapBetweenButtonAndTitle}`}
                 type="submit" 
               >
-                Done! Go to your Spotify account
+                Go to Spotify
               </button>
             </a>
             :
