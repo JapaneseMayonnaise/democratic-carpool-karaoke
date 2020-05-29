@@ -1,58 +1,89 @@
-body, html {
-  height: 100%;
+/* .hero {
+   background:red url(../images/background-desktop.jpg) center / cover
 }
 
-html {
-  font-size: 62.5%;
+.one-character {
+   font-size: 11rem;
 }
 
-body {
-
+.top, 
+.right, 
+.bottom, 
+.left {
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-.PlaylistGenerator_container {
-  padding: 0;
-  margin: 0;
-  padding-top: 8%;
-  height: 100%;
+.top {
+   align-items: flex-start;
 }
 
-.user1-form-multi-select {
-  font-size: 4em;
+.bottom {
+   align-items: flex-end;
 }
 
-.user2-form-multi-select {
-  margin-top: 4%;
-  font-size: 4em;
+.right {
+   justify-content: flex-end;
 }
 
-.user1-form-multi-select-options {
-  font-size: 0.6em;
+
+.no-padding-bottom {
+   padding-bottom: none;
 }
 
-.user2-form-multi-select-options {
-  font-size: 0.6em;
+.no-padding-top {
+   padding-top: none;
 }
 
-.playlist-name {
-  margin-top: 4%;
-  font-size: 4em;
+a:hover {
+   text-decoration: none;
 }
 
-.playlist-name-form {
-  font-size: 0.6em;
+a {
+   color: #fff;
 }
 
-.playlistgenerator-button {
-  margin-top: 3%;
-  margin-left: 15px;
-  font-size: 3em;
+.one-character {
+   font-size: 11rem;
 }
 
-.playlistgenerator-photo-credit a {
-  color: #f00;
+.post-character {
+   font-size: 1.5rem;
 }
 
-.playlistgenerator-photo-credit {
-  font-size: 1.5em;
+.button-size {
+   font-size: 2rem;
 }
+
+@media (max-width: 768px) {
+   .hero {
+      background:red url(../images/background-touch.jpg) center / cover
+   }
+
+   .one-character {
+      font-size: 7rem;
+   }
+
+   .button-size {
+      font-size: 1.4rem;
+   }
+
+   .post-character {
+      font-size: 1.3rem;
+   }
+}
+
+@media (max-width: 350px) {
+   .hero {
+      background:red url(../images/background-touch.jpg) center / cover
+   }
+
+   .one-character {
+      font-size: 6rem;
+   }
+
+   .button-size {
+      font-size: 1.2rem;
+   }
+} */

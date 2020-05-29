@@ -1,0 +1,204 @@
+/* SPACING AND FONT SIZE*/
+
+.heroFootSpacing {
+  /* margin-bottom: 4px; */
+  margin-left: 4px;
+}
+
+.heroBodySpacing {
+  padding: 10px 24px;
+} 
+
+.tagSpacing {
+  margin-bottom: 4px;
+  font-size: 1rem !important;
+}
+
+.gapBetweenButtonAndTitle {
+  margin-top: 50px;
+}
+
+.buttonSize {
+  font-size: 2rem;
+}
+
+.buttonFontAdjust {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.labelSize {
+  font-size: 2rem;
+}
+
+.labelColour {
+  color: #000;
+}
+
+.titleLabel {
+  /* width: 60%; */
+}
+
+/* SPACING AND SIZE*/
+
+/* DISPLAY, ALIGHMENT */
+
+/* .isInlineBlock {
+  display: inline-block;
+} */
+
+.right {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+/* DISPLAY, ALIGHMENT */
+
+/* COLOUR  */
+
+a {
+  color: #fff;
+} 
+
+a:hover  {
+  text-decoration: none;
+}
+
+/* COLOUR  */
+
+
+/* MISC */
+.heroBackground {
+  background:hsl(348, 100%, 61%) url(../images/background-desktop.jpg) center / cover;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.neon {
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 .4s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+
+/* MISC */
+
+/* MEDIA QUERY */
+
+@media (max-width: 1470px) {
+  /* These two are maent to be used together but separated style just in case. Without this, form labels would stay black and be really hard to see */
+  .labelColour {
+     color: #fff;
+  }
+
+  .formBackground {
+    background-color: rgba(255, 56, 96, 0.7);
+    border-radius: 4px;
+    padding: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+     background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
+  }
+
+  .oneCharacter {
+     font-size: 10rem;
+  }
+
+  .buttonSize {
+     font-size: 1.4rem;
+  }
+
+  .postCharacter {
+     font-size: 1.3rem;
+  }
+
+  .tagSpacing {
+     margin-bottom: 4px;
+     font-size: 0.8rem !important;
+   }
+
+   .gapBetweenButtonAndTitle {
+     margin-top: 40px;
+  }
+
+  .labelSize {
+    font-size: 1.5rem;
+ }
+
+  .formBackground {
+    background-color: rgba(255, 56, 96, 0.7);
+    border-radius: 4px;
+    padding: 0.5rem;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+}
+
+@media (max-width: 420px) {
+  .hero {
+     background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
+  }
+
+  .heroBodySpacing {
+    padding: 10px 15px;
+  } 
+  
+  .oneCharacter {
+     font-size: 8rem;
+  }
+
+  .buttonSize {
+     font-size: 1.2rem;
+  }
+
+  .tagSpacing {
+     margin-bottom: 4px;
+     font-size: 0.6rem !important;
+   }
+
+  .gapBetweenButtonAndTitle {
+     margin-top: 15px;
+  }
+  
+  .labelSize {
+    font-size: 1.3rem;
+  }
+  
+}
+
+/* MEDIA QUERY */

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './PlaylistGenerator.css';
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import SelectGeneration from './SelectGeneration/SelectGeneration'
+import '../../node_modules/bulma/css/bulma.css'
+import style from  './PlaylistGenerator.module.css';
 
 class PlaylistGenerator extends React.Component
 {
@@ -21,8 +21,8 @@ class PlaylistGenerator extends React.Component
 
   setValue = (e) =>
   {
-    // console.log("value: "+ e.target.value);
-    // console.log("name: "+ [e.target.name]);
+    console.log("value: "+ e.target.value);
+    console.log("name: "+ [e.target.name]);
 
     this.setState({
       [e.target.name]: e.target.value
@@ -53,74 +53,85 @@ class PlaylistGenerator extends React.Component
   render()
   {
     return(
-      <>
-        <div className="PlaylistGenerator_container">
-          <Form>
-            <Form.Group className="user1-form-multi-select">
-              <Form.Label>What year were you born in?</Form.Label>
-                <Col xs={{span:2, offset:0}}>
-                  <Form.Control as="select"  className="user1-form-multi-select-options" name="user1Generation" onChange={this.setValue} size="lg">
-                    <option value=''>Choose...</option>
-                    <option value='1930'>Before 1930s</option>
-                    <option value='1940'>1940s</option>
-                    <option value='1950'>1950s</option>
-                    <option value='1960'>1960s</option>
-                    <option value='1970'>1970s</option>
-                    <option value='1980'>1980s</option>
-                    <option value='1990'>1990s</option>
-                    <option value='2000'>2000s</option>
-                    <option value='2010'>After 2010s</option>
-                    <option value=''>Don't even ask</option>
-                  </Form.Control>
-              </Col>
-            </Form.Group>
-            <Form.Group className="user2-form-multi-select">
-              <Form.Label>What year was your carpool buddy born in?</Form.Label>
-                <Col xs={{span:2, offset:0}} >
-                  <Form.Control as="select" className="user2-form-multi-select-options" name="user2Generation" onChange={this.setValue} size="lg">
-                    <option value=''>Choose...</option>
-                    <option value='1930'>Before 1930s</option>
-                    <option value='1940'>1940s</option>
-                    <option value='1950'>1950s</option>
-                    <option value='1960'>1960s</option>
-                    <option value='1970'>1970s</option>
-                    <option value='1980'>1980s</option>
-                    <option value='1990'>1990s</option>
-                    <option value='2000'>2000s</option>
-                    <option value='2010'>After 2010s</option>
-                    <option value=''>Don't even ask</option>
-                  </Form.Control>
-                </Col>
-            </Form.Group>
-            <Form.Group className="playlist-name">
-            <Form.Label>Playlist Title?</Form.Label>
-              <Col xs={{span:4, offset:0}}>
-              <Form.Control className="playlist-name-form" name="playlistName" onChange={this.setValue} type="text" placeholder="Democratic Carpool Karaoke" size="lg"/>
-              </Col>
-            </Form.Group>
-          </Form>
-          {this.state.isPlaylistMadeYet ?
-            <Button className='playlistgenerator-button' 
-            variant="outline-success" 
-            type="button" 
-            
-            // href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
-            href='http://localhost:5000/secondClick' 
-            size="lg">
-              Done! Go to your Spotify account
-            </Button>
+      <section className={`hero is-fullheight ${style.heroBackground}`}>
+        <div className="hero-head"></div>
+        <div className={`hero-body ${style.right} ${style.heroBodySpacing}`}>
+          {/* Memo to self: This div(id="justStackPlz") is here to stack all fields, since Bulma horizontally center everything in hero-body if I didn't have this wrapper */}
+          <div id="justStackPlz" className="has-text-right">
+            <SelectGeneration 
+              labelText='Birth Year: User 1'
+              selectName="user1Generation"
+              setValue={this.setValue}
+            />
+
+            <SelectGeneration 
+              labelText='Birth Year: User 2'
+              selectName="user2Generation"
+              setValue={this.setValue} 
+            />
+              
+            <div className={`field  ${style.formBackground}`}>
+              <label 
+                className={`label ${style.labelSize}  ${style.labelColour} ${style.titleLabel} `}
+              >
+                Playlist Name
+              </label>
+              <div className="control">
+                <input 
+                  className="input is-danger is-medium"
+                  type="text"
+                  name="playlistName" 
+                  onChange={this.setValue} 
+                  placeholder="Democratic Carpool Karaoke" 
+                />
+              </div>
+            </div>
+
+            {this.state.isPlaylistMadeYet ?
+            <a
+              // href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
+              href='http://localhost:5000/secondClick' 
+            >
+              <button 
+                className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon} ${style.gapBetweenButtonAndTitle}`}
+                type="submit" 
+              >
+                Go to Spotify
+              </button>
+            </a>
             :
-            <Button className='playlistgenerator-button' variant="danger" type="submit" onClick={this.sendUsersGeneration} size="lg">
+
+            <button 
+              className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.gapBetweenButtonAndTitle} ${style.neon}`}
+              type="submit"
+              onClick={this.sendUsersGeneration} 
+            >
              Create Playlist
-            </Button>
-          }
+            </button>
+            }
         </div>
-        <Row>
-          <Col className='h6 playlistgenerator-photo-credit fixed-bottom text-center'>Made By <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">Shimba</a>. Photo by <a href="https://unsplash.com/@anniespratt">Annie Spratt</a>. 2019</Col>
-        </Row>
-      </>
+
+        </div>
+
+        <div className="hero-foot">
+          <div className={`${style.marginLeft} ${style.heroFootSpacing}`}>
+              <span className={`tag is-danger ${style.tagSpacing}`}>
+                Copyright 2020 &nbsp; 
+                <a href="https://shimba.dev">
+                Elliot Shimba
+                </a> &nbsp; | &nbsp;
+                <a href="https://github.com/DrCardamom/democratic-carpool-karaoke">
+                <FontAwesomeIcon icon={faGithub} /> Source code
+                </a>
+              </span> <br />
+              <span className={`tag is-danger ${style.tagSpacing}`}>
+                Photo credit : &nbsp; <a href="https://unsplash.com/@josefhu15">Jose Hernandez-Uribe</a>
+              </span>
+          </div>
+        </div>
+      </section>   
     );
-    }
+  }
 }
 
 export default PlaylistGenerator;
