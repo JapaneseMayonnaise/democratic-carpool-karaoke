@@ -23,33 +23,17 @@
 
 .postCharacter {
   font-size: 1.5rem;
-}
+}  
 
 .buttonSize {
   font-size: 2rem;
-}
+}  
 
 .buttonFontAdjust {
   font-family: 'Permanent Marker', cursive;
-}
+}  
 
 /* SPACING AND SIZE*/
-
-/* COLOUR  */
-
-.titleColour {
-  color: #000;
-}
-
-a {
-  color: #fff;
-} 
-
-a:hover  {
-  text-decoration: none;
-}
-
-/* COLOUR  */
 
 /* DISPLAY, ALIGHMENT */
 .isInlineBlock {
@@ -75,6 +59,22 @@ a:hover  {
 }
 
 /* DISPLAY, ALIGHMENT */
+
+/* COLOUR  */
+
+.titleColour {
+  color: #000;
+}  
+
+a {
+  color: #fff;
+}   
+
+a:hover  {
+  text-decoration: none;
+}  
+
+/* COLOUR  */
 
 .heroBackground {
   background:hsl(348, 100%, 61%) url(../images/background-desktop.jpg) center / cover;

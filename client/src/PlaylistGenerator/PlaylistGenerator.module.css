@@ -34,9 +34,29 @@
   color: #000;
 }
 
-
+.titleLabel {
+  /* width: 60%; */
+}
 
 /* SPACING AND SIZE*/
+
+/* DISPLAY, ALIGHMENT */
+
+/* .isInlineBlock {
+  display: inline-block;
+} */
+
+.right {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+/* DISPLAY, ALIGHMENT */
 
 /* COLOUR  */
 
@@ -50,31 +70,6 @@ a:hover  {
 
 /* COLOUR  */
 
-/* DISPLAY, ALIGHMENT */
-
-/* .isInlineBlock {
-  display: inline-block;
-} */
-
-/* .right {
-  display: flex; */
-  /* justify-content: center; */
-  /* align-items: center;
-} */
-
-/* .top {
-  align-items: flex-start;
-}
-
-.bottom {
-  align-items: flex-end;
-} */
-
-.right {
-  justify-content: flex-end;
-}
-
-/* DISPLAY, ALIGHMENT */
 
 /* MISC */
 .heroBackground {
@@ -119,6 +114,19 @@ a:hover  {
 
 /* MEDIA QUERY */
 
+@media (max-width: 1470px) {
+  /* These two are maent to be used together but separated style just in case. Without this, form labels would stay black and be really hard to see */
+  .labelColour {
+     color: #fff;
+  }
+
+  .formBackground {
+    background-color: rgba(255, 56, 96, 0.7);
+    border-radius: 4px;
+    padding: 0.7rem;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
      background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
@@ -149,23 +157,16 @@ a:hover  {
     font-size: 1.5rem;
  }
 
- .labelColour {
-    color: #fff;
- }
+  .formBackground {
+    background-color: rgba(255, 56, 96, 0.7);
+    border-radius: 4px;
+    padding: 0.5rem;
+    }
+
 }
 
 @media (max-width: 640px) {
-  .titleColour {
-    color: #fff;
-  }
 
-  .labelColour {
-    color: #fff;
-  }
-
-  .stayBlack {
-    color: #000;
-  }
 }
 
 @media (max-width: 420px) {
@@ -173,6 +174,10 @@ a:hover  {
      background:hsl(348, 100%, 61%) url(../images/background-touch.jpg) center / cover
   }
 
+  .heroBodySpacing {
+    padding: 10px 15px;
+  } 
+  
   .oneCharacter {
      font-size: 8rem;
   }
@@ -190,21 +195,10 @@ a:hover  {
      margin-top: 15px;
   }
   
-  .titleColour {
-    color: #fff;
-  }
-
   .labelSize {
     font-size: 1.3rem;
   }
   
-  .labelColour {
-    color: #fff;
-  }
-
-  .stayBlack {
-    color: #000;
-  }
 }
 
 /* MEDIA QUERY */

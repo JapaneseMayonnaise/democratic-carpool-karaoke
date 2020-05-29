@@ -3,22 +3,23 @@
     font-size: 2rem;
  }
 
- .generationPickerSpacing {
-    padding-bottom: 3rem;
- }
-
  .labelColour {
     color: #000;
  }
+
+ .formSpacing {
+    margin-bottom: 3rem !important;
+ }
+
  /* SPACING AND SIZE*/
  
- /* COLOUR  */
- 
- /* COLOUR  */
- 
  /* DISPLAY, ALIGHMENT */
  
  /* DISPLAY, ALIGHMENT */
+
+ /* COLOUR  */
+
+ /* COLOUR  */
  
  /* MISC */
 
@@ -26,37 +27,39 @@
  
  /* MEDIA QUERY */
  
+ @media (max-width: 1470px) {
+   .labelColour {
+      color: #fff;
+   }
+
+   .formBackground {
+      background-color: rgba(255, 56, 96, 0.7);
+      border-radius: 4px;
+      padding: 0.7rem;
+    }
+
+}
+
  @media (max-width: 768px) {
    .labelSize {
       font-size: 1.5rem;
    }
-  
-   .generationPickerSpacing {
-      padding-bottom: 2rem;
-   }
 
-   .labelColour {
-      color: #fff;
-   }
+   .formBackground {
+      background-color: rgba(255, 56, 96, 0.7);
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
  }
  
  @media (max-width: 640px) {
-   .labelColour {
-      color: #fff;
-   }
+
  }
  
  @media (max-width: 420px) {
    .labelSize {
       font-size: 1.3rem;
-   }
-  
-   .generationPickerSpacing {
-      padding-bottom: 1.5rem;
-   }
-
-   .labelColour {
-      color: #fff;
    }
  }
  

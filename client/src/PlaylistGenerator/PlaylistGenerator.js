@@ -55,7 +55,7 @@ class PlaylistGenerator extends React.Component
     return(
       <section className={`hero is-fullheight ${style.heroBackground}`}>
         <div className="hero-head"></div>
-        <div className={`hero-body ${style.right}`}>
+        <div className={`hero-body ${style.right} ${style.heroBodySpacing}`}>
           {/* Memo to self: This div(id="justStackPlz") is here to stack all fields, since Bulma horizontally center everything in hero-body if I didn't have this wrapper */}
           <div id="justStackPlz" className="has-text-right">
             <SelectGeneration 
@@ -70,13 +70,15 @@ class PlaylistGenerator extends React.Component
               setValue={this.setValue} 
             />
               
-            <div className="field">
-              <label className={`label ${style.labelSize} ${style.stayBlack} ${style.labelColour}`}>
+            <div className={`field  ${style.formBackground}`}>
+              <label 
+                className={`label ${style.labelSize}  ${style.labelColour} ${style.titleLabel} `}
+              >
                 Playlist Title?
               </label>
               <div className="control">
                 <input 
-                  className="input is-danger"
+                  className="input is-danger is-medium"
                   type="text"
                   name="playlistName" 
                   onChange={this.setValue} 

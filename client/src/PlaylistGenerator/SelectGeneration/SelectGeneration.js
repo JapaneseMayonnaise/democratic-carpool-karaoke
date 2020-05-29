@@ -4,8 +4,8 @@ import style from  './SelectGeneration.module.css';
 
 const SelectGeneration = ({labelText, selectName, setValue}) => 
 
-<div className={`field ${style.generationPickerSpacing}`}>
-   <label className={`label ${style.labelSize} ${style.labelColour}`}>
+<div className={`field ${style.generationPickerSpacing} ${style.formBackground} ${style.formSpacing}`}>
+   <label className={`label ${style.labelSize} ${style.labelColour} `}>
       {labelText}
    </label>
    <div className="control is-expanded" onChange={setValue} >
