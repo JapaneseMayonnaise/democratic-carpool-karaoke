@@ -107,6 +107,10 @@ const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
   sharedVar.trackIdArray_User1 = trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, request);
 
   sharedVar.trackIdArray_User2 = trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, request);
+  
+  // trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, request, sharedVar.trackIdArray_User1);
+
+  // trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, request, sharedVar.trackIdArray_User2);
 }
 
 module.exports = {

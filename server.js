@@ -52,7 +52,9 @@ app.post('/firstClick', (req, res) => {
   console.log('☘️ User1 generation: ' + req.body.gen1);
   console.log('🌸 User2 generation: ' + req.body.gen2);
 
+  // generate a playlist address, nothing in it yet
   playlistUrl.generatePlaylistUrl(req, res, request)
+  // make an API call to fetch track IDs then put them into an 2 arrays 
   chooseGenerations.generate2TrackIdArrays(req, res, request, app, bodyParser)
 
   res.send('true'); 

@@ -1,4 +1,3 @@
-
 const sharedVar = require('../../config/sharedVariables');
 
  /** 
@@ -12,7 +11,7 @@ const sharedVar = require('../../config/sharedVariables');
   */
 const generateTrackIdArray = (playlistURI, playlistTitle, request) => {   
 
-   let trackIdArray = [];
+   let trackIdArray=[];
 
   /**
    * Retrieve maximum 50 track IDs from Spotify
@@ -46,15 +45,22 @@ const generateTrackIdArray = (playlistURI, playlistTitle, request) => {
        * Store all trackIDs you just fetched in trackIdArray
        */
 
+       console.log('body.items --->', body.items );
+       
       for(let i = 0; i < body.items.length; i++)
       {
          trackIdArray.push(body.items[i].track.uri);
       }
+      console.log('trackIdArray generated with for loop🦁:', trackIdArray);     
 
-      console.log('trackIdArray generated🦁:');     
+      // trackIdArray = body.items.map(trackInfo => trackInfo.track.uri);
+
+      // console.log('trackIdArray generated with map🦁:', trackIdArray);     
 
    })
-
+   
+   // console.log('right before return', trackIdArray);
+   
    return trackIdArray;
 }
 
