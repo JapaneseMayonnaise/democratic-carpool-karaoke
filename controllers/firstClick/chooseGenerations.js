@@ -51,23 +51,23 @@ const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
       playlistTitle_user1 = "All Out 90s";
       break;
     case '1980':
-      playlistURI_user1 = '37i9dQZF1DX843Qf4lrFtZ';
-      playlistTitle_user1 = "Latest Hits";
+      playlistURI_user1 = '0098gmqDhZTMCeGxXUBghm';
+      playlistTitle_user1 = "All Out 2000s";
       break;
     case '1990':
-      playlistURI_user1 = '2CJsD3fcYJWcliEKnwmovU';
-      playlistTitle_user1 = "Top 50 Global";
+      playlistURI_user1 = '6m044n8wYzaKq5nDVW0iKX';
+      playlistTitle_user1 = "Pride Party 2020";
       break;
     case '2000':
-      playlistURI_user1 = '3Zu0J0JzSRzAT32LgFyg7i';
-      playlistTitle_user1 = "Top New 2019 in England";
+      playlistURI_user1 = '37i9dQZEVXbMDoHDwVN2tF';
+      playlistTitle_user1 = "Global Top 50";
       break;
     case '2010':
       playlistURI_user1 = '51bG0ck3GcCirhWLddBKfU';
       playlistTitle_user1 = "Kids Songs";
       break;
     default:
-      playlistURI_user1 = '5Zv7fTFAnzrMIHFrxQycLS';
+      playlistURI_user1 = '37i9dQZF1DXab8DipvnuNU';
       playlistTitle_user1 = "Multi Generation";
   };
 
@@ -106,24 +106,24 @@ const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
       playlistTitle_user2 = "All Out 90s";
       break;
     case '1980':
-      playlistURI_user2 = '6rzrCJQ8BicVz2mdHiAWr0';
-      playlistTitle_user2 = "Weekly Hits";
+      playlistURI_user2 = '0098gmqDhZTMCeGxXUBghm';
+      playlistTitle_user2 = "All Out 2000s";
       break;
     case '1990':
-      playlistURI_user2 = '2BAkAh0GWqDwuSFEJsH1wJ';
-      playlistTitle_user2 = "Low Volume Funk";
+      playlistURI_user2 = '0Nifk783vhUt1AOy4kMDUH';
+      playlistTitle_user2 = "Badass Bitch Mode";
       break;
     case '2000':
-      playlistURI_user2 = '37i9dQZF1DWSrj7tqQ9IOu';
-      playlistTitle_user2 = "French Indie Pop";
+      playlistURI_user2 = '37i9dQZF1DWWAqc46ZJdZf';
+      playlistTitle_user2 = "Black Lives Matter";
       break;
     case '2010':
       playlistURI_user2 = '37i9dQZF1DWZhxU4AiByxO';
       playlistTitle_user2 = "Pop 4 Kids";
       break;
     default:
-      playlistURI_user2 = '08dTiXNDWDTBVbBEbJ7Qq8';
-      playlistTitle_user2 = "Multi Generation";
+      playlistURI_user2 = '77Sw8wb54decwG859ZaemS';
+      playlistTitle_user2 = "Family Dance Party";
   };
 
   app.use(bodyParser.json());
