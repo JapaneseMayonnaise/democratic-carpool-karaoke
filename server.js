@@ -33,7 +33,7 @@ app.use(cookieParser())
  * Spotify authorization process step 1/3;
  * get an authorization code
  */
-app.get('/login', (req, res) => {
+app.get('/login', (req, res) => {  
   login.handleLogin(req, res, stateKey, querystring, client_id)
 });
 
@@ -64,8 +64,9 @@ app.post('/firstClick', (req, res) => {
  * Actually add songs to the playlist placeholder 
  */
 app.get('/secondClick', (req, res) => {
-    merge.mix2Arrays();
-    completePlaylist.pushSongsIntoPlaylist(req, res, request);
+
+  merge.mix2Arrays();
+  completePlaylist.pushSongsIntoPlaylist(req, res, request);
 });
 
 if (process.env.NODE_ENV === 'production') {

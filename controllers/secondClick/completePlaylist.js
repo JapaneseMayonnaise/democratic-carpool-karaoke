@@ -5,6 +5,15 @@ const sharedVar = require('../../config/sharedVariables');
  * then redirect user to their spotify account.
  */
 const pushSongsIntoPlaylist = (req, res, request) => {
+  console.log('@completePlaylist sharedVar.user_id', sharedVar.user_id);
+  console.log('@completePlaylist sharedVar.playlistId', sharedVar.playlistId);
+  console.log('@completePlaylist sharedVar.playlistURL', sharedVar.playlistURL);
+  console.log('@completePlaylist sharedVar.trackIdArray_User1', sharedVar.trackIdArray_User1);
+  console.log('@completePlaylist sharedVar.trackIdArray_User2', sharedVar.trackIdArray_User2);
+  console.log('@completePlaylist sharedVar.mixedArray', sharedVar.mixedArray);
+  console.log('@completePlaylist sharedVar.access_token', sharedVar.access_token);
+
+
     const add_songs_bodyData =
     {
       uris: sharedVar.mixedArray

@@ -5,6 +5,11 @@ const sharedVar = require('../../config/sharedVariables');
 *  Every 2 songs extracted from each trackIdArray.
 */
 const mix2Arrays = () => {
+
+  console.log('@mix2aarays before sharedVar.mixedArray', sharedVar.mixedArray);
+  console.log('@mix2aarays before sharedVar.trackIdArray_User1', sharedVar.trackIdArray_User1);
+  console.log('@mix2aarays before sharedVar.trackIdArray_User2', sharedVar.trackIdArray_User2);
+
     let whereToInsert = 2;
     for(let i = 0; i < sharedVar.trackIdArray_User1.length; i++)
     {
@@ -14,6 +19,11 @@ const mix2Arrays = () => {
     }
 
     sharedVar.mixedArray = sharedVar.trackIdArray_User2;
+
+    console.log('@mix2aarays after sharedVar.mixedArray', sharedVar.mixedArray);
+    console.log('@mix2aarays after sharedVar.trackIdArray_User1', sharedVar.trackIdArray_User1);
+    console.log('@mix2aarays after  sharedVar.trackIdArray_User2', sharedVar.trackIdArray_User2);
+    
 }
 
 module.exports = {

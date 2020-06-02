@@ -17,7 +17,19 @@ const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
   let playlistURI_user1, playlistTitle_user1, playlistURI_user2, playlistTitle_user2;
 
   switch(req.body.gen1)
-  {
+  {    
+    case '1900':
+      playlistURI_user2 = '7olpTqGzGrYuI76ZBlCLgs';
+      playlistTitle_user2 = "All Out 20s";
+    break;
+    case '1910':
+      playlistURI_user2 = '5PurqOTEB9F9ZwUtovb8MU';
+      playlistTitle_user2 = "All Out 30s";
+      break;
+    case '1920':
+      playlistURI_user2 = '0CZdFXdaI14hzMPdhLwCBT';
+      playlistTitle_user2 = "All Out 40s";
+    break;
     case '1930':
       playlistURI_user1 = '37i9dQZF1DWSV3Tk4GO2fq';
       playlistTitle_user1 = "All Out 50s";
@@ -60,11 +72,23 @@ const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
   };
 
   switch(req.body.gen2)
-  {
+  {           
+    case '1900':
+      playlistURI_user2 = '7olpTqGzGrYuI76ZBlCLgs';
+      playlistTitle_user2 = "All Out 20s";
+      break;
+    case '1910':
+      playlistURI_user2 = '5PurqOTEB9F9ZwUtovb8MU';
+      playlistTitle_user2 = "All Out 30s";
+      break;
+    case '1920':
+      playlistURI_user2 = '0CZdFXdaI14hzMPdhLwCBT';
+      playlistTitle_user2 = "All Out 40s";
+    break;
     case '1930':
       playlistURI_user2 = '37i9dQZF1DWSV3Tk4GO2fq';
       playlistTitle_user2 = "All Out 50s";
-      break;
+    break;
     case '1940':
       playlistURI_user2 = '37i9dQZF1DXaKIA8E7WcJj';
       playlistTitle_user2 = "All Out 60s";
@@ -103,14 +127,8 @@ const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
   };
 
   app.use(bodyParser.json());
-
-  sharedVar.trackIdArray_User1 = trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, request);
-
-  sharedVar.trackIdArray_User2 = trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, request);
   
-  // trackIdArray.generateTrackIdArray(playlistURI_user1, playlistTitle_user1, request, sharedVar.trackIdArray_User1);
-
-  // trackIdArray.generateTrackIdArray(playlistURI_user2, playlistTitle_user2, request, sharedVar.trackIdArray_User2);
+  trackIdArray.generateTrackIdArray(playlistURI_user1, playlistURI_user2, playlistTitle_user1, playlistTitle_user2, request);
 }
 
 module.exports = {
