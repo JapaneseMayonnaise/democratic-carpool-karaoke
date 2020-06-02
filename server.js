@@ -64,7 +64,9 @@ app.post('/firstClick', (req, res) => {
  * Actually add songs to the playlist placeholder 
  */
 app.get('/secondClick', (req, res) => {
-
+  console.log('sharedVar.trackIdArray_User1', sharedVar.trackIdArray_User1);
+  console.log('sharedVar.trackIdArray_User2', sharedVar.trackIdArray_User2);
+  
   merge.mix2Arrays();
   completePlaylist.pushSongsIntoPlaylist(req, res, request);
 });

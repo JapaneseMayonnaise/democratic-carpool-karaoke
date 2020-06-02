@@ -1,18 +1,26 @@
 const sharedVar = require('../../config/sharedVariables');
+const shuffle = require('./shuffle');
 
-/**
-*  Mix 2 trackIdArrays. 
-*  Every 2 songs extracted from each trackIdArray.
-*/
+
 const mix2Arrays = () => {
-    sharedVar.mixedArray = sharedVar.trackIdArray_User1.flatMap((trackId_user1, i) => {
+
+  shuffle.randomArray();
+
+  /**
+  *  Mix 2 trackIdArrays. 
+  *  Every 2 songs extracted from each trackIdArray.
+  */
+    sharedVar.mixedArray = sharedVar.finalArray_user1.flatMap((trackId_user1, i) => {
       if(i % 2 === 1) {
-            return [trackId_user1, sharedVar.trackIdArray_User2[i-1], sharedVar.trackIdArray_User2[i]]
+            return [trackId_user1, sharedVar.finalArray_user2[i-1], sharedVar.finalArray_user2[i]]
           } else {
             return trackId_user1;
           }
       }  
     ); 
+
+    console.log('sharedVar.mixedArray', sharedVar.mixedArray);
+    
 }
 
 module.exports = {

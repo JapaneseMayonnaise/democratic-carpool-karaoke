@@ -32,8 +32,8 @@ class PlaylistGenerator extends React.Component
   sendUsersGeneration = async e => {
     e.preventDefault();
 
-    const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/firstClick';
-    // const UriTofetchFrom = 'http://localhost:5000/firstClick';
+    // const UriTofetchFrom = 'https://democratic-carpool-karaoke.herokuapp.com/firstClick';
+    const UriTofetchFrom = 'http://localhost:5000/firstClick';
 
     const response = await fetch(UriTofetchFrom,
     {
@@ -89,8 +89,8 @@ class PlaylistGenerator extends React.Component
 
             {this.state.isPlaylistMadeYet ?
             <a
-              href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
-              // href='http://localhost:5000/secondClick' 
+              // href='https://democratic-carpool-karaoke.herokuapp.com/secondClick' 
+              href='http://localhost:5000/secondClick' 
             >
               <button 
                 className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon} ${style.gapBetweenButtonAndTitle}`}

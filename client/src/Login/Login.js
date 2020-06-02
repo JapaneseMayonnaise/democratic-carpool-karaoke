@@ -42,8 +42,8 @@ class Login extends React.Component {
 
             <a 
               className={`${style.isInlineBlock} ${style.gapBetweenButtonAndTitle}`}
-              // href='http://localhost:5000/login' 
-              href='https://democratic-carpool-karaoke.herokuapp.com/login'
+              href='http://localhost:5000/login' 
+              // href='https://democratic-carpool-karaoke.herokuapp.com/login'
             >
               <button 
                 className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon}`}
