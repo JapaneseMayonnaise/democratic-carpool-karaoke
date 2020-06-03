@@ -5,7 +5,7 @@ Democratic Carpool Karaoke is a web application that generates a playlist on use
 
 ## 📥 Installaton instruction
 ```
-// at your /home
+// Git clone
 git clone git@github.com:DrCardamom/democratic-carpool-karaoke.git
 
 // or if SSH clone doesn't work for you, try https clone (but remember, ssh clone is better)
@@ -21,8 +21,8 @@ yarn dev
 
 ## 🧰 Tech stacks
 * [React.js](https://reactjs.org/)
-* [React Bootstrap](https://react-bootstrap.github.io/)
 * [React Router](https://github.com/ReactTraining/react-router)
+* [Bulma](https://bulma.io/)
 * [Web Font Loader](https://github.com/typekit/webfontloader)
 * [Express](https://expressjs.com/)
 * [Dotenv](https://www.npmjs.com/package/dotenv)
