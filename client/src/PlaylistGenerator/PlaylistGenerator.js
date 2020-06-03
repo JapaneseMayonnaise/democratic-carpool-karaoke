@@ -96,7 +96,7 @@ class PlaylistGenerator extends React.Component
                 className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon} ${style.gapBetweenButtonAndTitle}`}
                 type="submit" 
               >
-                Go check it out! 
+                &nbsp;&nbsp;Go To Spotify &nbsp;&nbsp;
               </button>
             </a>
             :
@@ -106,7 +106,7 @@ class PlaylistGenerator extends React.Component
               type="submit"
               onClick={this.sendUsersGeneration} 
             >
-             Create Playlist
+             Create A Playlist
             </button>
             }
         </div>
