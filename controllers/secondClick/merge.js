@@ -17,10 +17,7 @@ const mix2Arrays = () => {
             return trackId_user1;
           }
       }  
-    ); 
-
-    console.log('sharedVar.mixedArray', sharedVar.mixedArray);
-    
+    );     
 }
 
 module.exports = {
