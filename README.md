@@ -1,7 +1,7 @@
 # Democratic Carpool Karaoke
 Democratic Carpool Karaoke is a web application that generates a playlist on user's Spotify account which consists of hit songs from 2 different generations based on use input.
 
-![democratic carpool karaoke demo gif](https://thumbs.gfycat.com/RaggedSadCarp-size_restricted.gif)
+![democratic carpool karaoke demo gif](https://thumbs.gfycat.com/SpicyCheapBull-size_restricted.gif)
 
 ## 📥 Installaton instruction
 ```
