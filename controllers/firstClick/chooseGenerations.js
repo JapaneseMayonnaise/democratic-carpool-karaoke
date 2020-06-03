@@ -12,7 +12,7 @@ const trackIdArray = require('./trackIdArray');
   * @param  {string} playlistURI_user2 Spotify playlist URI. to be passed to sharedVar.trackIdArray_User2 to fetch track IDs
   * @param  {string} playlistTitle_user2 the playlist title of what is assigned in playlistURI_user2
   */
-const generate2TrackIdArrays = (req, res, request, app, bodyParser) => {
+const generate2TrackIdArrays = async(req, res, request, app, bodyParser) => {
 
   let playlistURI_user1, playlistTitle_user1, playlistURI_user2, playlistTitle_user2;
 
