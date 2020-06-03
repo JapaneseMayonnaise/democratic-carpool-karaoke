@@ -96,7 +96,7 @@ class PlaylistGenerator extends React.Component
                 className={`button is-danger is-focused ${style.buttonSize} ${style.buttonFontAdjust} ${style.neon} ${style.gapBetweenButtonAndTitle}`}
                 type="submit" 
               >
-                Go to Spotify!!
+                Go check it out! 
               </button>
             </a>
             :
